@@ -33,20 +33,18 @@ export const verifyJWT = async (jwt: string) => {
   return payload.payload as any;
 };
 
-// this set JWT with user id, email as cookie to response  - its used on login/register
-export const setCookieInResponse = async (
+// this create cookie JWT with user id, email  - its used on login/register
+export const createCookieForResponse = async (
   user: AuthFormData,
-  res: NextApiResponse,
-): Promise<void> => {
+): Promise<{ 'Set-Cookie': string }> => {
   const jwt = await createJWT(user);
-  res.setHeader(
-    'Set-Cookie',
-    serialize(process.env.COOKIE_NAME as string, jwt, {
+  return {
+    'Set-Cookie': serialize(process.env.COOKIE_NAME as string, jwt, {
       httpOnly: true,
       path: '/',
       maxAge: 60 * 60 * 24 * 7,
     }),
-  );
+  }
 };
 
 // this take JWT from cookie value and encode it to get user id - it return user from db by id from cookie (current logged user)

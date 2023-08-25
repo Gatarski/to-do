@@ -84,3 +84,4 @@ Dodać tabele w bazie danych:
 INNE:
 - Wprowadzenie theme - https://tailwindcss.com/docs/theme
 - Zobaczyć czy można uderzyć postamen na endpointa - jeśli tak to zabezpieczyć aby JWT sę zgadzał
+- wywalić axios i użyć fetch który jest wbudowany w next

@@ -3,8 +3,7 @@ import database from '@/lib/database';
 import { WelcomePage } from '@/components/WelcomePage';
 
 export default async function Home() {
-  // await syncWithDataBase();
-  // HERE wywalić komentarz i zostawić kod
+  await syncWithDataBase();
 
   return (
     <Card>

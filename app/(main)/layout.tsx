@@ -1,7 +1,7 @@
 import { LeftSidebar } from '@/components/LeftSidebar';
 import TopPanel from '@/components/TopPanel';
 
-export default async function HomeLayout({ children }: { children: React.ReactNode }) {
+export default async function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <LeftSidebar />
