@@ -4,3 +4,4 @@ export interface AuthFormData {
   password: string;
   name?: string;
 }
+

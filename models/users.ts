@@ -1,6 +1,6 @@
 import database from '@/lib/database';
 import { DataTypes, Model } from 'sequelize';
-import { AuthFormData } from '@/types/common';
+import { AuthFormData } from '@/util/common';
 
 interface UserModelInterface extends Model<AuthFormData>, AuthFormData {}
 

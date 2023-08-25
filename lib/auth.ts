@@ -1,9 +1,8 @@
 import Users from '@/models/users';
-import { AuthFormData } from '@/types/common';
+import { AuthFormData } from '@/util/common';
 import bcrypt from 'bcrypt';
 import { serialize } from 'cookie';
 import { SignJWT, jwtVerify } from 'jose';
-import { NextApiResponse } from 'next';
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
 // this is used to hash password which will be saved on db
@@ -44,7 +43,7 @@ export const createCookieForResponse = async (
       path: '/',
       maxAge: 60 * 60 * 24 * 7,
     }),
-  }
+  };
 };
 
 // this take JWT from cookie value and encode it to get user id - it return user from db by id from cookie (current logged user)

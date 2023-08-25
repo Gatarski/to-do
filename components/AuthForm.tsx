@@ -4,7 +4,7 @@ import { FormikProvider, useFormik } from 'formik';
 import { Input } from './UI/Input';
 import { useEffect, useState } from 'react';
 import Button from './UI/Button';
-import { AuthFormData } from '@/types/common';
+import { AuthFormData } from '@/util/common';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { loginAPI, registerAPI } from '@/lib/apiClient';

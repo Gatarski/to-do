@@ -3,6 +3,7 @@ import { jwtVerify } from 'jose';
 
 export async function middleware(req: NextRequest) {
   const jwtFromCookie = req.cookies.get(process.env.COOKIE_NAME as string);
+
   if (!jwtFromCookie) {
     req.nextUrl.pathname = '/login';
     return NextResponse.redirect(req.nextUrl);

@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData } from '@/types/common';
+import { AuthFormData } from '@/util/common';
 
 interface FetcherInterface {
   url: string;
@@ -47,6 +47,18 @@ export const registerAPI = async (userCredentials: AuthFormData) => {
       url: '/api/register',
       method: 'POST',
       body: userCredentials,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logoutAPI = async () => {
+  try {
+    return fetcher({
+      url: '/api/logout',
+      method: 'POST',
+      body: {},
     });
   } catch (error) {
     console.log(error);
