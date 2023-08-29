@@ -1,3 +1,7 @@
+import { Projects } from "@/components/Projects";
+
 export default async function Home() {
-  return <div>Home Page</div>;
+  return <Projects />
 }
+
+

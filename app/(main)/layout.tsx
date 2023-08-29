@@ -5,9 +5,9 @@ export default async function MainLayout({ children }: { children: React.ReactNo
   return (
     <>
       <LeftSidebar />
-      <div className="w-full h-full flex-col">
+      <div className="w-full h-full flex flex-col">
         <TopPanel />
-        <div className="w-full h-5/6 flex items-center justify-center">{children}</div>
+        <div className="w-full h-full flex items-center justify-center">{children}</div>
       </div>
     </>
   );
