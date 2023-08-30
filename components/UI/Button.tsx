@@ -1,4 +1,4 @@
-import { Button as ButtonAnt, Space } from 'antd';
+import { Button as ButtonAnt } from 'antd';
 import React from 'react';
 
 interface ButtonsProps {
@@ -7,6 +7,7 @@ interface ButtonsProps {
   type?: 'primary' | 'dashed' | 'link' | 'text' | 'default';
   htmlType?: 'button' | 'submit' | 'reset';
   className?: string;
+  onClick?: Function;
 }
 
 const Button: React.FC<ButtonsProps> = ({
@@ -15,9 +16,18 @@ const Button: React.FC<ButtonsProps> = ({
   htmlType = 'button',
   type = 'default',
   className,
+  onClick,
 }) => {
   return (
-    <ButtonAnt className={className} htmlType={htmlType} disabled={isDisabled} type={type}>
+    <ButtonAnt
+      className={className}
+      htmlType={htmlType}
+      disabled={isDisabled}
+      type={type}
+      onClick={() => {
+        onClick && onClick();
+      }}
+    >
       {buttonText}
     </ButtonAnt>
   );

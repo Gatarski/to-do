@@ -1,21 +1,16 @@
-'use client';
 import { Card } from './UI/Card';
-import { Input } from 'antd';
 import { EventCardData } from '@/util/common';
 import { EventCard } from './EventCard';
-import { useState } from 'react';
-import Button from './UI/Button';
 import { AddNewItemCard } from './AddNewItemCard';
-import { AddEventModal } from './AddEventModal';
+import { SearchBar } from './SearchBar';
+import { AddNewItemButton } from './AddNewItemButton';
 
-const { Search } = Input;
-
-export const Projects = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
+interface ProjectProps {
+  event: string;
+}
+export const Projects = ({ event }: ProjectProps) => {
   const events = getEvents();
-  const filteredEvents = filterEvents(searchValue, events);
+  const filteredEvents = filterEvents(event, events);
 
   const areEvents = !!filteredEvents.length;
   const eventStyle = areEvents ? 'flex' : 'h-[90%] flex items-center justify-center';
@@ -24,24 +19,8 @@ export const Projects = () => {
       <Card className="w-[95%] h-[95%] bg-white border border-gray">
         <>
           <div className="mx-5">
-            <Search
-              className="py-5"
-              placeholder={'Search events by title'}
-              allowClear={false}
-              enterButton="Search"
-              size="large"
-              onSearch={(value: string) => {
-                setSearchValue(value);
-              }}
-            />
-            {!areEvents && (
-              <Button
-                className="w-full"
-                isDisabled={false}
-                htmlType="submit"
-                buttonText={'Add new event'}
-              />
-            )}
+            <SearchBar searchKeyUrl="event" placeholder="Search events by title" />
+            {!areEvents && <AddNewItemButton buttonText="Add new event" modal="event" />}
           </div>
           <div className={eventStyle}>
             {areEvents ? (
@@ -58,13 +37,7 @@ export const Projects = () => {
                     />
                   );
                 })}
-                <div
-                  onClick={() => {
-                    setIsModalOpen(true)
-                  }}
-                >
-                  <AddNewItemCard buttonText="Add new event" />
-                </div>
+                <AddNewItemCard buttonText="Add new event" modal="event" />
               </>
             ) : (
               <NoData />
@@ -72,7 +45,6 @@ export const Projects = () => {
           </div>
         </>
       </Card>
-      <AddEventModal modalOpen={isModalOpen}></AddEventModal>
     </>
   );
 };
