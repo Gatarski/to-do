@@ -29,3 +29,8 @@
 [data-nextjs-scroll-focus-boundary] {
   display: contents;
 }
+
+.ant-btn-primary,
+.ant-input-search-button {
+  background-color: #1677ff;
+}

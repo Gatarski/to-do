@@ -11,6 +11,7 @@ import {
   FileTextTwoTone,
 } from '@ant-design/icons';
 import '../styles/global.css';
+import { ICON_SIZE } from '@/util/common';
 
 export const SidebarLink = ({ link, icon, label }: LinkInterface) => {
   const pathname = usePathname();
@@ -24,8 +25,9 @@ export const SidebarLink = ({ link, icon, label }: LinkInterface) => {
 };
 
 const getIcon = (iconName: IconType, isLinkActive: boolean, label: string) => {
-  const ICON_STYLE = `text-center ${isLinkActive && 'font-medium'} hover:font-bold`;
-  const ICON_SIZE = '38px';
+  const ICON_STYLE = `text-center ${
+    isLinkActive && 'font-medium'
+  } transition-transform hover:scale-105`;
 
   switch (iconName) {
     case 'Appstore':

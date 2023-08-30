@@ -4,7 +4,7 @@ import { Sequelize } from 'sequelize';
 //   dialect: 'mysql',
 // })
 // HERE to wyżej to do railway bazy danych
-const db = new Sequelize('node-complete', 'root', 'Test123!@', {
+const db = new Sequelize('next-schema', 'root', 'Test123!@', {
   dialect: 'mysql',
   host: 'localhost',
 });
