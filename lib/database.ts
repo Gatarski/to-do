@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-// const db = new Sequelize(process.env.DATABASE_MYSQL_URL as string, {
+// const db = new Sequelize(process.env.PRODUCTION_DATABASE_MYSQL_URL as string, {
 //   dialect: 'mysql',
 // })
 // HERE to wyżej to do railway bazy danych
