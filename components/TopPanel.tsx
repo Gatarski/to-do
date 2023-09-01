@@ -1,11 +1,9 @@
 import { getUserFromCookie } from '@/lib/auth';
 import { AuthFormData } from '@/util/common';
-import { cookies } from 'next/headers';
 import { Logout } from './Logout';
 
 export default async function TopPanel() {
-  const cookie = cookies();
-  const user = await getUserFromCookie(cookie);
+  const user = await getUserFromCookie();
   const { email, name } = user?.dataValues as AuthFormData;
 
   const userNameToDisplay = name ? name : email;

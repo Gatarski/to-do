@@ -1,0 +1,92 @@
+'use client';
+
+import { Modal } from 'antd';
+import Button from './UI/Button';
+import { FormikProvider, useFormik } from 'formik';
+import {
+  FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
+  FIELD_REQUIRED_VALIDATION_MESSAGE,
+  MAX_100_CHARS,
+  TaskData,
+} from '@/util/common';
+import { TextArea } from './UI/TextArea';
+import { Tabs } from './UI/Tabs';
+import * as Yup from 'yup';
+import { postTaskAPI } from '@/lib/apiClient';
+import { useRouter } from 'next/navigation';
+
+interface AddTaskModalProps {
+  modalOpen: boolean;
+  closeModal: Function;
+  eventId?: number;
+}
+
+const initialValues: TaskData = {
+  task: '',
+  importance: 'medium',
+  isDone: false,
+};
+
+export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalProps) => {
+  const router = useRouter();
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: async () => {
+      const formValues = formik.values;
+      const response = await postTaskAPI({ ...formValues, ProjectId: eventId });
+      if (response.status === 201) {
+        closeModal();
+        formik.resetForm();
+        router.refresh();
+      }
+    },
+  });
+
+  return (
+    <Modal width={'600px'} closable={false} open={modalOpen} footer={<></>}>
+      <>
+        <FormikProvider value={formik}>
+          <form onSubmit={formik.handleSubmit}>
+            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid">
+              <header className="text-base font-semibold">Add new task</header>
+              <p className="text-sx font-normal">Complete below form to add new task</p>
+            </div>
+            <div>
+              <TextArea
+                labelText="Task"
+                name="task"
+                id="task"
+                placeholder="Add your task"
+                maxLength={MAX_100_CHARS}
+              />
+              <Tabs
+                labelText="Importance"
+                name="importance"
+                id="importance"
+                options={['small', 'medium', 'very']}
+              />
+            </div>
+            <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6">
+              <Button
+                buttonText="Cancel"
+                isDisabled={false}
+                onClick={() => {
+                  formik.resetForm();
+                  closeModal();
+                }}
+              />
+              <Button buttonText="Save" isDisabled={false} type="primary" htmlType="submit" />
+            </div>
+          </form>
+        </FormikProvider>
+      </>
+    </Modal>
+  );
+};
+
+const validationSchema = Yup.object().shape({
+  task: Yup.string()
+    .required(FIELD_REQUIRED_VALIDATION_MESSAGE)
+    .max(MAX_100_CHARS, FIELD_MAX_100_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Task')),
+});

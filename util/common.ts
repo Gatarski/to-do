@@ -13,6 +13,13 @@ export interface EventData {
   status: 'pending' | 'closed';
 }
 
+export interface TaskData {
+  id?: string;
+  task: string;
+  isDone: boolean;
+  importance: 'small' | 'medium' | 'very';
+}
+
 export const ICON_SIZE = '38px';
 
 export const FIELD_MAX_100_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 100 characters`;

@@ -1,17 +1,24 @@
 'use client';
-import { Input as InputAnt } from 'antd';
+import { Input } from 'antd';
 import { useField } from 'formik';
 import { FC, useState } from 'react';
 
-interface InputProps {
+interface TextAreaProps {
   labelText: string;
   placeholder: string;
   name: string;
   id: string;
-  type?: string;
+  maxLength: number;
 }
+const { TextArea: AntTextArea } = Input;
 
-export const Input: FC<InputProps> = ({ labelText, placeholder, name, type, ...rest }) => {
+export const TextArea: FC<TextAreaProps> = ({
+  labelText,
+  placeholder,
+  name,
+  maxLength,
+  ...rest
+}) => {
   const [field, meta] = useField({ name, ...rest });
   const [isFocus, setIsFocus] = useState(false);
 
@@ -27,7 +34,7 @@ export const Input: FC<InputProps> = ({ labelText, placeholder, name, type, ...r
   return (
     <div className="m-3 p-2 text-left">
       <label className={`text-xs ${isError && 'text-red-600'}`}>{labelText}</label>
-      <InputAnt
+      <AntTextArea
         className={`pl-1 leading-normal rounded-none h-10 ${
           isError && 'border-red-600 hover:border-red-600'
         }`}
@@ -36,7 +43,7 @@ export const Input: FC<InputProps> = ({ labelText, placeholder, name, type, ...r
         placeholder={placeholder}
         onBlur={onBlur}
         onFocus={onFocus}
-        type={type}
+        maxLength={maxLength}
       />
       <div className="text-xs text-red-600">{isError ? meta.error : ''}</div>
     </div>

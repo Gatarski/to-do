@@ -7,19 +7,20 @@ import { displayModal, useModalVisibility } from '@/util/utils';
 interface AddNewItemCardProps {
   buttonText: string;
   modal: 'event' | 'task';
+  eventId?: number;
 }
 
 // AddNewItemCard return clickable card which will open modal
-export const AddNewItemCard = ({ buttonText, modal }: AddNewItemCardProps) => {
+export const AddNewItemCard = ({ buttonText, modal, eventId }: AddNewItemCardProps) => {
   const { isModalOpen, openModal, closeModal } = useModalVisibility();
 
   return (
     <>
       <div onClick={openModal}>
         <Card
-          className={
-            'm-4 w-48 h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center items-center border border-dashed border-[#1677ff] hover:bg-gray-200'
-          }
+          className={`${
+            modal === 'task' ? 'w-64 h-24' : 'w-48 h-48'
+          } m-4 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center items-center border border-dashed border-[#1677ff] hover:bg-gray-200`}
         >
           <>
             <PlusCircleTwoTone style={{ fontSize: ICON_SIZE }} />
@@ -27,7 +28,7 @@ export const AddNewItemCard = ({ buttonText, modal }: AddNewItemCardProps) => {
           </>
         </Card>
       </div>
-      {displayModal('event', isModalOpen, closeModal)}
+      {displayModal(modal, isModalOpen, closeModal, eventId)}
     </>
   );
 };

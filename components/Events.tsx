@@ -5,11 +5,9 @@ import { AddNewItemCard } from './AddNewItemCard';
 import { SearchBar } from './SearchBar';
 import { AddNewItemButton } from './AddNewItemButton';
 import Projects from '@/models/projects';
-import { getUserFromCookie } from '@/lib/auth';
-import { cookies } from 'next/headers';
+import { getUserIdFromCookie } from '@/lib/auth';
 import Link from 'next/link';
 import { GuideBox } from './GuideBox';
-import { UserDatabaseInterface } from '@/models/users';
 
 interface EventsProps {
   event: string;
@@ -58,13 +56,10 @@ export const Events = async ({ event }: EventsProps) => {
 };
 
 const getEvents = async (): Promise<EventData[]> => {
-  const cookie = cookies();
-  const user = await getUserFromCookie(cookie);
-  const { id } = user?.dataValues as UserDatabaseInterface;
-
+  const userId = await getUserIdFromCookie();
   const projectsFromDB = await Projects.findAll({
     where: {
-      UserId: id,
+      UserId: userId,
     },
   });
 

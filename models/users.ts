@@ -1,12 +1,9 @@
 import database from '@/lib/database';
-import { MAX_50_CHARS } from '@/util/common';
+import { MAX_50_CHARS, AuthFormData } from '@/util/common';
 import { DataTypes, Model } from 'sequelize';
 
-export interface UserDatabaseInterface {
+export interface UserDatabaseInterface extends AuthFormData {
   id: number;
-  email: string;
-  password: string;
-  name?: string;
 }
 
 interface UserModelInterface extends Model<UserDatabaseInterface>, UserDatabaseInterface {}

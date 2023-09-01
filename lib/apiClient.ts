@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData, EventData } from '@/util/common';
+import { AuthFormData, EventData, TaskData } from '@/util/common';
+import { TasksDatabaseInterface } from '@/models/tasks';
 
 interface FetcherInterface {
   url: string;
@@ -69,6 +70,18 @@ export const postProjectAPI = async (projectData: EventData) => {
   try {
     return fetcher({
       url: '/api/projects',
+      method: 'POST',
+      body: projectData,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const postTaskAPI = async (projectData: TasksDatabaseInterface) => {
+  try {
+    return fetcher({
+      url: '/api/tasks',
       method: 'POST',
       body: projectData,
     });

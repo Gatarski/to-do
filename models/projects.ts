@@ -1,14 +1,8 @@
 import database from '@/lib/database';
-import { MAX_100_CHARS, MAX_20_CHARS } from '@/util/common';
+import { EventData, MAX_100_CHARS, MAX_20_CHARS } from '@/util/common';
 import { DataTypes, Model } from 'sequelize';
 
-export interface ProjectDatabaseInterface {
-  id: number;
-  title: string;
-  shortDescription: string;
-  importance: 'small' | 'medium' | 'very';
-  deadline: string;
-  status: 'pending' | 'closed';
+export interface ProjectDatabaseInterface extends EventData {
   UserId: number;
   createdAt?: string;
   updatedAt?: string;

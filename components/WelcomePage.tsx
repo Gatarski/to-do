@@ -1,11 +1,9 @@
 import Link from 'next/link';
-import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getIsUserLoggedIn } from '@/lib/auth';
 
 export const WelcomePage = async () => {
-  const cookie = cookies();
-  const isUserLoggedIn = await getIsUserLoggedIn(cookie);
+  const isUserLoggedIn = await getIsUserLoggedIn();
   if (isUserLoggedIn) {
     redirect('/home');
   }

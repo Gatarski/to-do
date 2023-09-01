@@ -2,7 +2,7 @@ import Users, { UserDatabaseInterface } from '@/models/users';
 import bcrypt from 'bcrypt';
 import { serialize } from 'cookie';
 import { SignJWT, jwtVerify } from 'jose';
-import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import { cookies } from 'next/headers';
 
 // this is used to hash password which will be saved on db
 export const hashPassword = (password: string): Promise<string> => bcrypt.hash(password, 10);
@@ -46,7 +46,8 @@ export const createCookieForResponse = async (
 };
 
 // this take JWT from cookie value and encode it to get user id - it return user from db by id from cookie (current logged user)
-export const getUserFromCookie = async (cookie: ReadonlyRequestCookies) => {
+export const getUserFromCookie = async () => {
+  const cookie = cookies();
   const jwt = cookie.get(process.env.COOKIE_NAME as string);
 
   const { id } = jwt && (await verifyJWT(jwt.value));
@@ -59,9 +60,16 @@ export const getUserFromCookie = async (cookie: ReadonlyRequestCookies) => {
   return user;
 };
 // this encode JWT from cookie - if pass we know that user is logged in
-export const getIsUserLoggedIn = async (cookie: ReadonlyRequestCookies): Promise<boolean> => {
+export const getIsUserLoggedIn = async (): Promise<boolean> => {
+  const cookie = cookies();
   const jwtFromCookie = cookie.get(process.env.COOKIE_NAME as string)?.value as string;
   return (await jwtFromCookie)
     ? !!jwtVerify(jwtFromCookie, new TextEncoder().encode(process.env.JWT_SECRET))
     : false;
+};
+
+export const getUserIdFromCookie = async (): Promise<number> => {
+  const user = await getUserFromCookie();
+  const { id } = user?.dataValues as UserDatabaseInterface;
+  return id;
 };
