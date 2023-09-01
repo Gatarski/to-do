@@ -1,5 +1,4 @@
-import Users from '@/models/users';
-import { AuthFormData } from '@/util/common';
+import Users, { UserDatabaseInterface } from '@/models/users';
 import bcrypt from 'bcrypt';
 import { serialize } from 'cookie';
 import { SignJWT, jwtVerify } from 'jose';
@@ -13,7 +12,7 @@ export const checkPasswords = (password: string, hashPassword: string): Promise<
   bcrypt.compare(password, hashPassword);
 
 // this create JWT with user id, email - JWT is signed by global env JWT_SECRET - it return JWT string
-const createJWT = (user: AuthFormData): Promise<string> => {
+const createJWT = (user: UserDatabaseInterface): Promise<string> => {
   const { id, email } = user;
   const iat = Math.floor(Date.now() / 1000);
   const oneWeekExpire = iat + 60 * 60 * 24 * 7;
@@ -34,7 +33,7 @@ export const verifyJWT = async (jwt: string) => {
 
 // this create cookie JWT with user id, email  - its used on login/register
 export const createCookieForResponse = async (
-  user: AuthFormData,
+  user: UserDatabaseInterface,
 ): Promise<{ 'Set-Cookie': string }> => {
   const jwt = await createJWT(user);
   return {

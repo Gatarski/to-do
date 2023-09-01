@@ -22,7 +22,7 @@ export const POST = async (request: NextRequest) => {
     if (canRegisterNewUser) {
       const user = await Users.create(userData);
       const cookie = await createCookieForResponse(user);
-      return new NextResponse(null, { status: 200, headers: cookie });
+      return new NextResponse(null, { status: 201, headers: cookie });
     } else {
       return NextResponse.json({ error: CONTACT_OWNER_MSG }, { status: 401 });
     }

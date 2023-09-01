@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData } from '@/util/common';
+import { AuthFormData, EventData } from '@/util/common';
 
 interface FetcherInterface {
   url: string;
@@ -59,6 +59,18 @@ export const logoutAPI = async () => {
       url: '/api/logout',
       method: 'POST',
       body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const postProjectAPI = async (projectData: EventData) => {
+  try {
+    return fetcher({
+      url: '/api/projects',
+      method: 'POST',
+      body: projectData,
     });
   } catch (error) {
     console.log(error);

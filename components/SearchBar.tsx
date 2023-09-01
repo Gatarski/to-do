@@ -24,7 +24,7 @@ export const SearchBar = ({ searchKeyUrl, placeholder }: SearchBarProps) => {
   const queryParamsValue = searchParams.get(searchKeyUrl);
   return (
     <Search
-      className="py-5"
+      className="mb-5"
       placeholder={placeholder}
       allowClear={false}
       enterButton="Search"

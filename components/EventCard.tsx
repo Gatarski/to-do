@@ -1,15 +1,9 @@
 import { Card } from './UI/Card';
-import { EventCardData } from '@/util/common';
+import { EventData } from '@/util/common';
 
-export const EventCard = ({
-  title,
-  shortDescription,
-  importance,
-  deadline,
-  status,
-}: EventCardData) => {
+export const EventCard = ({ title, shortDescription, importance, deadline, status }: EventData) => {
   return (
-    <Card className="m-5 w-48 h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center">
+    <Card className="m-4 w-48 h-48 min-w-48 min-h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center">
       <>
         <h1 className="font-bold">{title}</h1>
         <p className="text-sm py-1">{shortDescription}</p>

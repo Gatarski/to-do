@@ -13,7 +13,7 @@ export const WelcomePage = async () => {
   return (
     <>
       <div className="text-center">
-        <h2 className="text-3xl mb-2">Welcome</h2>
+        <h1 className="text-3xl mb-2">Welcome</h1>
         <h2 className="text-2xl mb-2 p-1">Have plans to organize?</h2>
         <p className="tex-lg text-black/25">
           Create simple well organized event with tasks to not miss anything

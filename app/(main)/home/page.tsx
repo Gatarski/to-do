@@ -1,4 +1,4 @@
-import { Projects } from '@/components/Projects';
+import { Events } from '@/components/Events';
 
 interface HomeSearchParams {
   event: string;
@@ -11,5 +11,5 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const { event } = searchParams;
-  return <Projects event={event} />;
+  return <Events event={event} />;
 }

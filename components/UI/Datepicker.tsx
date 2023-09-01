@@ -21,6 +21,8 @@ export const Datepicker: FC<DatepickerProps> = ({ labelText, placeholder, name, 
         className={`pl-1 leading-normal rounded-none h-10 ${
           meta.error && 'border-red-600 hover:border-red-600'
         }`}
+        allowClear={false}
+        showToday={true}
         defaultValue={field.value}
         onChange={(_, date) => {
           setValue(date);

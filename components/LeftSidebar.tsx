@@ -10,7 +10,7 @@ export interface LinkInterface {
 }
 
 const links: LinkInterface[] = [
-  { label: 'Home', icon: 'Appstore', link: '/home' },
+  { label: 'Events', icon: 'Appstore', link: '/home' },
   { label: 'Notes', icon: 'File', link: '/notes' },
   { label: 'Setting', icon: 'Settings', link: '/settings' },
 ];

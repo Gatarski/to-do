@@ -4,7 +4,12 @@ import { FormikProvider, useFormik } from 'formik';
 import { Input } from './UI/Input';
 import { useEffect, useState } from 'react';
 import Button from './UI/Button';
-import { AuthFormData } from '@/util/common';
+import {
+  AuthFormData,
+  FIELD_MAX_50_CHARS_VALIDATION_MESSAGE,
+  FIELD_REQUIRED_VALIDATION_MESSAGE,
+  MAX_50_CHARS,
+} from '@/util/common';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { loginAPI, registerAPI } from '@/lib/apiClient';
@@ -70,9 +75,8 @@ const REGISTER_SCHEMA = [
     placeholder: 'Your name',
   },
 ];
-const PASSWORD_VALIDATION_MESSAGE = 'Password should containat least 6 characters';
+const PASSWORD_VALIDATION_MESSAGE = 'Password should contain at least 6 characters';
 const EMAIL_VALIDATION_MESSAGE = 'Invalid email';
-const NAME_VALIDATION_MESSAGE = `Display name can't be longer than 50 characters`;
 
 export const AuthForm = ({ authMode }: AuthFormProps) => {
   const [isClient, setIsClient] = useState(false);
@@ -187,9 +191,18 @@ const formSubmit = async (authMode: AuthMode, values: AuthFormData, setIsApiLoad
 };
 
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email(EMAIL_VALIDATION_MESSAGE),
-  password: Yup.string().min(6, PASSWORD_VALIDATION_MESSAGE),
-  name: Yup.string().max(50, NAME_VALIDATION_MESSAGE),
+  email: Yup.string()
+    .email(EMAIL_VALIDATION_MESSAGE)
+    .required(FIELD_REQUIRED_VALIDATION_MESSAGE)
+    .max(MAX_50_CHARS, FIELD_MAX_50_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Email')),
+  password: Yup.string()
+    .min(6, PASSWORD_VALIDATION_MESSAGE)
+    .required(FIELD_REQUIRED_VALIDATION_MESSAGE)
+    .max(MAX_50_CHARS, FIELD_MAX_50_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Password')),
+  name: Yup.string().max(
+    MAX_50_CHARS,
+    FIELD_MAX_50_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Name'),
+  ),
 });
 
 const useValidationMessage = (messageToShow: string, setApiError: Function) => {

@@ -18,7 +18,7 @@ export const AddNewItemCard = ({ buttonText, modal }: AddNewItemCardProps) => {
       <div onClick={openModal}>
         <Card
           className={
-            'm-5 w-48 h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center items-center border border-dashed border-[#1677ff] hover:bg-gray-200'
+            'm-4 w-48 h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center items-center border border-dashed border-[#1677ff] hover:bg-gray-200'
           }
         >
           <>

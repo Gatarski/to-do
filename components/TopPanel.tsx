@@ -10,7 +10,7 @@ export default async function TopPanel() {
 
   const userNameToDisplay = name ? name : email;
   return (
-    <div className="rounded-tr-2xl border border-gray h-20 bg-white flex items-center justify-between">
+    <div className="min-h-[75px] rounded-tr-2xl border border-gray h-20 bg-white flex items-center justify-between">
       <div className="pl-6 text-xl">You are logged as {userNameToDisplay}</div>
       <div className="pr-6">
         <Logout />
