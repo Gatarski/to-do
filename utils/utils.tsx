@@ -1,6 +1,7 @@
 import { AddEventModal } from '@/components/AddEventModal';
 import { AddTaskModal } from '@/components/AddTaskModal';
 import { useState } from 'react';
+import { ItemType } from './common';
 
 export const useModalVisibility = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,12 +17,12 @@ export const useModalVisibility = () => {
 };
 
 export const displayModal = (
-  modal: 'event' | 'task',
+  modalType: ItemType,
   isModalOpen: boolean,
   closeModal: Function,
   eventId?: number,
 ): JSX.Element => {
-  switch (modal) {
+  switch (modalType) {
     case 'event':
       return <AddEventModal modalOpen={isModalOpen} closeModal={closeModal} />;
     case 'task':

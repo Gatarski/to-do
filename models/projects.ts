@@ -1,5 +1,5 @@
 import database from '@/lib/database';
-import { EventData, MAX_100_CHARS, MAX_20_CHARS } from '@/util/common';
+import { EventData, MAX_100_CHARS, MAX_20_CHARS } from '@/utils/common';
 import { DataTypes, Model } from 'sequelize';
 
 export interface ProjectDatabaseInterface extends EventData {
@@ -24,7 +24,7 @@ const Projects = database.db.define<ProjectModelInterface>('Projects', {
     type: DataTypes.STRING(MAX_100_CHARS),
     allowNull: false,
   },
-  importance: {
+  priority: {
     type: DataTypes.STRING,
     allowNull: false,
   },

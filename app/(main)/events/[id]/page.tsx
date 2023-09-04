@@ -1,4 +1,4 @@
-import { EventData } from '@/util/common';
+import { EventData } from '@/utils/common';
 import Projects from '@/models/projects';
 import { ProjectDatabaseInterface } from '@/models/projects';
 import { Event } from '@/components/Event';

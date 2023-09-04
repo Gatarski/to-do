@@ -1,4 +1,5 @@
 'use client';
+import { ItemType } from '@/utils/common';
 import { Input } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
@@ -7,7 +8,7 @@ const { Search } = Input;
 
 interface SearchBarProps {
   placeholder: string;
-  searchKeyUrl: 'event' | 'task';
+  searchKeyUrl: ItemType;
 }
 /*
 SearchBar create query params in URL with key from searchKeyUrl and value from input.

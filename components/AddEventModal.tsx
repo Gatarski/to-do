@@ -9,7 +9,7 @@ import {
   MAX_100_CHARS,
   MAX_20_CHARS,
   EventData,
-} from '@/util/common';
+} from '@/utils/common';
 import { Input } from './UI/Input';
 import { Tabs } from './UI/Tabs';
 import { Datepicker } from './UI/Datepicker';
@@ -38,10 +38,10 @@ const EVENT_SCHEMA = [
     type: 'input',
   },
   {
-    labelText: 'Importance',
-    name: 'importance',
-    id: 'importance',
-    options: ['small', 'medium', 'very'],
+    labelText: 'Priority',
+    name: 'priority',
+    id: 'priority',
+    options: ['small', 'medium', 'urgent'],
     type: 'tabs',
   },
   {
@@ -56,7 +56,7 @@ const EVENT_SCHEMA = [
 const initialValues: EventData = {
   title: '',
   shortDescription: '',
-  importance: 'medium',
+  priority: 'medium',
   deadline: '',
   status: 'pending',
 };

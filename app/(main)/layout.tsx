@@ -1,5 +1,6 @@
 import { LeftSidebar } from '@/components/LeftSidebar';
-import TopPanel from '@/components/TopPanel';
+import { TopPanel } from '@/components/TopPanel';
+
 
 export default async function MainLayout({ children }: { children: React.ReactNode }) {
   return (

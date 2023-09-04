@@ -11,7 +11,7 @@ import {
   FileTextTwoTone,
 } from '@ant-design/icons';
 import '../styles/global.css';
-import { ICON_SIZE } from '@/util/common';
+import { ICON_SIZE } from '@/utils/common';
 
 export const SidebarLink = ({ link, icon, label }: LinkInterface) => {
   const pathname = usePathname();

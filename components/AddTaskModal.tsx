@@ -4,11 +4,11 @@ import { Modal } from 'antd';
 import Button from './UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
-  FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
+  FIELD_MAX_70_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
-  MAX_100_CHARS,
+  MAX_70_CHARS,
   TaskData,
-} from '@/util/common';
+} from '@/utils/common';
 import { TextArea } from './UI/TextArea';
 import { Tabs } from './UI/Tabs';
 import * as Yup from 'yup';
@@ -23,7 +23,7 @@ interface AddTaskModalProps {
 
 const initialValues: TaskData = {
   task: '',
-  importance: 'medium',
+  priority: 'medium',
   isDone: false,
 };
 
@@ -58,13 +58,13 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
                 name="task"
                 id="task"
                 placeholder="Add your task"
-                maxLength={MAX_100_CHARS}
+                maxLength={MAX_70_CHARS}
               />
               <Tabs
-                labelText="Importance"
-                name="importance"
-                id="importance"
-                options={['small', 'medium', 'very']}
+                labelText="Priority"
+                name="priority"
+                id="priority"
+                options={['small', 'medium', 'urgent']}
               />
             </div>
             <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6">
@@ -88,5 +88,5 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
 const validationSchema = Yup.object().shape({
   task: Yup.string()
     .required(FIELD_REQUIRED_VALIDATION_MESSAGE)
-    .max(MAX_100_CHARS, FIELD_MAX_100_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Task')),
+    .max(MAX_70_CHARS, FIELD_MAX_70_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Task')),
 });

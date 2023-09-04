@@ -1,5 +1,5 @@
 import { Card } from './UI/Card';
-import { EventData } from '@/util/common';
+import { EventData } from '@/utils/common';
 import { EventCard } from './EventCard';
 import { AddNewItemCard } from './AddNewItemCard';
 import { SearchBar } from './SearchBar';
@@ -25,7 +25,7 @@ export const Events = async ({ event }: EventsProps) => {
           <div className="mx-5">
             <GuideBox guideText="You can organize future events. To create event use button or card 'Add New Event'. Click on event for more details." />
             <SearchBar searchKeyUrl="event" placeholder="Search events by title" />
-            {!areEvents && <AddNewItemButton buttonText="Add new event" modal="event" />}
+            {!areEvents && <AddNewItemButton buttonText="Add new event" itemType="event" />}
           </div>
           <div className={eventsStyle}>
             {areEvents ? (
@@ -36,14 +36,14 @@ export const Events = async ({ event }: EventsProps) => {
                       <EventCard
                         title={event.title}
                         shortDescription={event.shortDescription}
-                        importance={event.importance}
+                        priority={event.priority}
                         deadline={event.deadline}
                         status={event.status}
                       />
                     </Link>
                   );
                 })}
-                <AddNewItemCard buttonText="Add new event" modal="event" />
+                <AddNewItemCard buttonText="Add new event" itemType="event" />
               </>
             ) : (
               <NoData />

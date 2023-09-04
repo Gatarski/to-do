@@ -8,7 +8,7 @@ import {
   FIELD_MAX_50_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
   MAX_50_CHARS,
-} from '@/util/common';
+} from '@/utils/common';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { loginAPI, registerAPI } from '@/lib/apiClient';

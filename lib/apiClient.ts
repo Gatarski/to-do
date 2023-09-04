@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData, EventData, TaskData } from '@/util/common';
+import { AuthFormData, EventData } from '@/utils/common';
 import { TasksDatabaseInterface } from '@/models/tasks';
 
 interface FetcherInterface {
@@ -84,6 +84,42 @@ export const postTaskAPI = async (projectData: TasksDatabaseInterface) => {
       url: '/api/tasks',
       method: 'POST',
       body: projectData,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const doneTaskAPI = async (id?: string) => {
+  try {
+    return fetcher({
+      url: `/api/tasks/${id}`,
+      method: 'PUT',
+      body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteTaskAPI = async (id: string | number | undefined) => {
+  try {
+    return fetcher({
+      url: `/api/tasks/${id}`,
+      method: 'DELETE',
+      body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteProjectAPI = async (id: string | number | undefined) => {
+  try {
+    return fetcher({
+      url: `/api/projects/${id}`,
+      method: 'DELETE',
+      body: {},
     });
   } catch (error) {
     console.log(error);

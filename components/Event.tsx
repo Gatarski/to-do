@@ -1,4 +1,4 @@
-import { EventData, TaskData } from '@/util/common';
+import { EventData, TaskData } from '@/utils/common';
 import { Card } from '@/components/UI/Card';
 import { GuideBox } from './GuideBox';
 import { ChipWithTitle } from './ChipWIthTitle';
@@ -7,6 +7,8 @@ import { TaskCard } from './TaskCard';
 import { AddNewItemButton } from './AddNewItemButton';
 import { AddNewItemCard } from './AddNewItemCard';
 import Tasks from '@/models/tasks';
+import Projects from '@/models/projects';
+import { DeleteItemButton } from './DeleteItemButton';
 
 interface EventProps {
   event: EventData | undefined;
@@ -21,6 +23,10 @@ export const Event = async ({ event }: EventProps) => {
 
   const areTasks = !!tasks.length;
   const tasksStyle = areTasks ? 'flex flex-wrap' : 'h-1/2 flex items-center justify-center';
+  const daysLeft = countDaysToEvent(event?.deadline);
+
+  await changeProjectStatus(tasks, eventId);
+
   return (
     <>
       <Card className={eventStyle}>
@@ -30,27 +36,35 @@ export const Event = async ({ event }: EventProps) => {
               <div className="flex flex-col items-center border-b border-solid">
                 <div className="w-full">
                   <div className="flex justify-between">
-                    <Link href="/home">
-                      <div className="underline font-bold">Go back to events</div>
-                    </Link>
+                    <div className="flex flex-col justify-between">
+                      <Link href="/home">
+                        <div className="underline font-bold">Go back to events</div>
+                      </Link>
+                        <DeleteItemButton itemType="event" id={eventId}/>
+                    </div>
                     <div className="flex flex-col items-center">
                       <h1 className="text-3xl my-2 font-bold">{event.title}</h1>
                       <h2 className="text-2xl mb-2 p-1">{event.shortDescription}</h2>
                     </div>
-                    <div className="flex flex-col">
-                      <ChipWithTitle chipText={event.importance} chipTitle="Importance:" />
-                      <ChipWithTitle chipText={event.deadline} chipTitle="Deadline:" />
+                    <div className="flex">
+                      <div className="flex flex-col">
+                        <ChipWithTitle chipText={event.priority} chipTitle="Priority:" />
+                        <ChipWithTitle chipText={event.deadline} chipTitle="Deadline:" />
+                      </div>
+                      <div className="p-2 m-2 mb-6 flex items-center font-bold">
+                        <div>{daysLeft} days left</div>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div className="w-full flex items-center">
-                  <GuideBox guideText="You can organize your event. To create tasks in event use button or card 'Add New Task'." />
+                  <GuideBox guideText="You can organize your event. To create tasks in event use button or card 'Add New Task'. Click on task to complete it." />
                   <div className="ml-2">
                     <ChipWithTitle chipText={countCompletedTasks(tasks)} chipTitle="Completed:" />
                   </div>
                 </div>
                 {!areTasks && (
-                  <AddNewItemButton buttonText="Add new task" modal="task" eventId={eventId} />
+                  <AddNewItemButton buttonText="Add new task" itemType="task" eventId={eventId} />
                 )}
               </div>
               <div className={tasksStyle}>
@@ -61,12 +75,13 @@ export const Event = async ({ event }: EventProps) => {
                         <TaskCard
                           key={index}
                           task={task.task}
-                          importance={task.importance}
+                          priority={task.priority}
                           isDone={task.isDone}
+                          id={task.id}
                         />
                       );
                     })}
-                    <AddNewItemCard buttonText="Add new task" modal="task" eventId={eventId} />
+                    <AddNewItemCard buttonText="Add new task" itemType="task" eventId={eventId} />
                   </>
                 ) : (
                   <NoData />
@@ -113,4 +128,28 @@ const getTasks = async (id: number | undefined): Promise<TaskData[]> => {
     return task;
   });
   return tasks;
+};
+
+const countDaysToEvent = (deadline?: string): string => {
+  if (deadline) {
+    const deadlineDate = new Date(deadline);
+    const currentDate = new Date();
+    const differenceBetweenDates = deadlineDate.getTime() - currentDate.getTime()
+
+    const daysToDeadline = differenceBetweenDates / (1000 * 3600 * 24);
+    return daysToDeadline.toFixed();
+  }
+  return '';
+};
+
+const changeProjectStatus = async (tasks: TaskData[], projectId: number | undefined) => {
+  const areAllTasksDone = tasks.every(task => task.isDone) && tasks.length
+    await Projects.update(
+      { status: areAllTasksDone ? 'tasks done' : 'pending' },
+      {
+        where: {
+          id: projectId,
+        },
+      },
+    );
 };
