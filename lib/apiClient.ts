@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData, EventData } from '@/utils/common';
+import { AuthFormData, EventData, ProfileData } from '@/utils/common';
 import { TasksDatabaseInterface } from '@/models/tasks';
 
 interface FetcherInterface {
@@ -30,7 +30,7 @@ const fetcher = async ({ url, method, body }: FetcherInterface) => {
   }
 };
 
-export const loginAPI = async (userCredentials: AuthFormData) => {
+export const loginUserAPI = async (userCredentials: AuthFormData) => {
   try {
     return fetcher({
       url: '/api/login',
@@ -42,7 +42,7 @@ export const loginAPI = async (userCredentials: AuthFormData) => {
   }
 };
 
-export const registerAPI = async (userCredentials: AuthFormData) => {
+export const registerUserAPI = async (userCredentials: AuthFormData) => {
   try {
     return fetcher({
       url: '/api/register',
@@ -54,7 +54,7 @@ export const registerAPI = async (userCredentials: AuthFormData) => {
   }
 };
 
-export const logoutAPI = async () => {
+export const logoutUserAPI = async () => {
   try {
     return fetcher({
       url: '/api/logout',
@@ -66,7 +66,7 @@ export const logoutAPI = async () => {
   }
 };
 
-export const postProjectAPI = async (projectData: EventData) => {
+export const createProjectAPI = async (projectData: EventData) => {
   try {
     return fetcher({
       url: '/api/projects',
@@ -78,7 +78,19 @@ export const postProjectAPI = async (projectData: EventData) => {
   }
 };
 
-export const postTaskAPI = async (projectData: TasksDatabaseInterface) => {
+export const editProjectAPI = async (projectData: EventData) => {
+  try {
+    return fetcher({
+      url: `/api/projects/${projectData.id}`,
+      method: 'PUT',
+      body: projectData,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createTaskAPI = async (projectData: TasksDatabaseInterface) => {
   try {
     return fetcher({
       url: '/api/tasks',
@@ -120,6 +132,18 @@ export const deleteProjectAPI = async (id: string | number | undefined) => {
       url: `/api/projects/${id}`,
       method: 'DELETE',
       body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const editProfileAPI = async (profileData: ProfileData) => {
+  try {
+    return fetcher({
+      url: '/api/profile',
+      method: 'PUT',
+      body: profileData,
     });
   } catch (error) {
     console.log(error);

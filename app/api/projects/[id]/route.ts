@@ -34,3 +34,30 @@ export const DELETE = async (request: NextRequest, { params }: ProjectProps) => 
     return NextResponse.json({ message: 'Project deleted' }, { status: 200 });
   }
 };
+
+export const PUT = async (request: NextRequest, { params }: ProjectProps) => {
+  const id = params.id;
+  const projectData = await request.json();
+  const userId = await getUserIdFromCookie();
+
+   const projectsFromDB = await Projects.findAll({
+     where: {
+       UserId: userId,
+     },
+   });
+
+   // it check if Project belongs to logged user to avoid eg.: editing projects from other users
+   const isCorrectProject = projectsFromDB.some(project => project.id?.toString() === id);
+ 
+   if (isCorrectProject) {
+     await Projects.update(
+       { ...projectData, UserId: userId },
+       {
+         where: {
+           id: id,
+         },
+       },
+     );
+      return NextResponse.json({ message: 'Project edited.', status: 200 }, { status: 200 });
+   }
+};

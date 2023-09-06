@@ -1,5 +1,4 @@
 'use client';
-
 import { Modal } from 'antd';
 import Button from './UI/Button';
 import { FormikProvider, useFormik } from 'formik';
@@ -12,7 +11,7 @@ import {
 import { TextArea } from './UI/TextArea';
 import { Tabs } from './UI/Tabs';
 import * as Yup from 'yup';
-import { postTaskAPI } from '@/lib/apiClient';
+import { createTaskAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 
 interface AddTaskModalProps {
@@ -34,7 +33,7 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
     validationSchema,
     onSubmit: async () => {
       const formValues = formik.values;
-      const response = await postTaskAPI({ ...formValues, ProjectId: eventId });
+      const response = await createTaskAPI({ ...formValues, ProjectId: eventId });
       if (response.status === 201) {
         closeModal();
         formik.resetForm();

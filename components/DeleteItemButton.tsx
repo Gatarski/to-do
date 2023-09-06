@@ -18,14 +18,14 @@ export const DeleteItemButton = ({ itemType, id, text }: DeleteItemButtonProps) 
   return (
     <>
       <div
-        className="h-6 w-6 min-h-[32px] min-w-[32px] cursor-pointer transition-transform hover:scale-105"
+        className="h-6 w-6 min-h-[32px] min-w-[32px] cursor-pointer transition-transform hover:scale-105 flex underline"
         onClick={e => {
           e.stopPropagation();
           openModal();
         }}
       >
-        {text}
-        <Image src={TrashIcon} alt="Trash Icon" />
+        <div className="pt-0.5">{text}</div>
+        <Image src={TrashIcon} alt="Trash icon" />
       </div>
       <DeleteItemModal
         modalOpen={isModalOpen}

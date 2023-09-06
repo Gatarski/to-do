@@ -9,6 +9,7 @@ interface InputProps {
   name: string;
   id: string;
   type?: string;
+  disabled?: boolean;
 }
 
 export const Input: FC<InputProps> = ({ labelText, placeholder, name, type, ...rest }) => {

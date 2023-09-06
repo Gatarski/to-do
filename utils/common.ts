@@ -1,3 +1,5 @@
+import { Dayjs } from 'dayjs';
+
 export interface AuthFormData {
   email: string;
   password: string;
@@ -9,7 +11,7 @@ export interface EventData {
   title: string;
   shortDescription: string;
   priority: 'small' | 'medium' | 'urgent';
-  deadline: string;
+  deadline: string | Dayjs;
   status: 'pending' | 'closed' | 'tasks done';
 }
 
@@ -22,7 +24,21 @@ export interface TaskData {
 
 export type ItemType = 'event' | 'task';
 
-export const ICON_SIZE = '38px';
+export interface ModalMessages {
+  title: string;
+  subtitle: string;
+}
+
+export interface ProfileData {
+  email?: string;
+  name?: string;
+}
+
+export interface PreviewData {
+  projectsTotalNumber: number;
+  projectsCompletedNumber: number;
+  projectsWithCompletedTasks: number;
+}
 
 export const FIELD_MAX_100_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 100 characters`;
 export const FIELD_MAX_70_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 70 characters`;

@@ -22,5 +22,5 @@ export async function middleware(req: NextRequest) {
 
 // this set which routes will be handled by above middleware
 export const config = {
-  matcher: ['/home', '/settings', '/notes'],
+  matcher: ['/home', '/profile', '/notes'],
 };

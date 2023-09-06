@@ -8,7 +8,7 @@ export const EventCard = ({ title, shortDescription, priority, deadline, status 
         <h1 className="font-bold">{title}</h1>
         <p className="text-sm py-1">{shortDescription}</p>
         <div>
-          <div className="text-sm py-1">{deadline}</div>
+          <div className="text-sm py-1">{deadline as string}</div>
           <div className={getStatusTextStyling(status)}>{status}</div>
         </div>
       </>

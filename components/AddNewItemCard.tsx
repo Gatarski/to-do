@@ -1,7 +1,7 @@
 'use client';
 import { PlusCircleTwoTone } from '@ant-design/icons';
 import { Card } from './UI/Card';
-import { ICON_SIZE, ItemType } from '@/utils/common';
+import { ItemType } from '@/utils/common';
 import { displayModal } from '@/utils/utils';
 import { useModalVisibility } from '@/utils/utils';
 
@@ -24,7 +24,7 @@ export const AddNewItemCard = ({ buttonText, itemType, eventId }: AddNewItemCard
           } m-4 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center items-center border border-dashed border-[#1677ff] hover:bg-gray-200`}
         >
           <>
-            <PlusCircleTwoTone style={{ fontSize: ICON_SIZE }} />
+            <PlusCircleTwoTone style={{ fontSize: '38px' }} />
             <label>{buttonText}</label>
           </>
         </Card>

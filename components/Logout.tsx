@@ -1,5 +1,5 @@
 'use client';
-import { logoutAPI } from '@/lib/apiClient';
+import { logoutUserAPI } from '@/lib/apiClient';
 import { PoweroffOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -24,6 +24,6 @@ export const Logout = () => {
 
 // this POST endpoint from logout and if success then set isLogout true to redirect to /login
 const logoutUser = async (setIsLogout: Function) => {
-  const apiResponse = await logoutAPI();
+  const apiResponse = await logoutUserAPI();
   setIsLogout(apiResponse.status === 200);
 };

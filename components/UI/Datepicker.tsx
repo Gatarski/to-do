@@ -10,6 +10,8 @@ interface DatepickerProps {
   id: string;
 }
 
+const DATE_FORMAT = 'YYYY-MM-DD';
+
 export const Datepicker: FC<DatepickerProps> = ({ labelText, placeholder, name, ...rest }) => {
   const [field, meta, { setValue }] = useField({ name, ...rest });
 
@@ -27,6 +29,7 @@ export const Datepicker: FC<DatepickerProps> = ({ labelText, placeholder, name, 
           setValue(date);
         }}
         placeholder={placeholder}
+        format={DATE_FORMAT}
         {...rest}
       />
       <div className="text-xs text-red-600">{meta.error ? meta.error : ''}</div>

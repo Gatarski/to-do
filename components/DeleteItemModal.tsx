@@ -1,5 +1,5 @@
 'use client';
-import { ItemType } from '@/utils/common';
+import { ItemType, ModalMessages } from '@/utils/common';
 import { Modal } from 'antd';
 import { useRouter } from 'next/navigation';
 import Button from './UI/Button';
@@ -63,12 +63,7 @@ const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Elemen
   );
 };
 
-interface ModalMessage {
-  title: string;
-  subtitle: string;
-}
-
-const getModalMessages = (itemType: ItemType): ModalMessage => {
+const getModalMessages = (itemType: ItemType): ModalMessages => {
   switch (itemType) {
     case 'task':
       return { title: 'Delete task', subtitle: 'Are you sure you want delete task?' };

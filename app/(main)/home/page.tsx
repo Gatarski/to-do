@@ -9,7 +9,7 @@ interface HomeProps {
   searchParams: HomeSearchParams;
 }
 
-export default async function Home({ searchParams }: HomeProps) {
+export default async function HomePage({ searchParams }: HomeProps) {
   const { event } = searchParams;
   return <Events event={event} />;
 }

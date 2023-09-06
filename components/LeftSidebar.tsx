@@ -1,7 +1,7 @@
 import { SidebarLink } from './SidebarLink';
 import { Card } from './UI/Card';
 
-export type IconType = 'Appstore' | 'Settings' | 'File';
+export type IconType = 'Events' | 'Profile' | 'Notes';
 
 export interface LinkInterface {
   label: string;
@@ -10,9 +10,9 @@ export interface LinkInterface {
 }
 
 const links: LinkInterface[] = [
-  { label: 'Events', icon: 'Appstore', link: '/home' },
-  { label: 'Notes', icon: 'File', link: '/notes' },
-  { label: 'Setting', icon: 'Settings', link: '/settings' },
+  { label: 'Events', icon: 'Events', link: '/home' },
+  { label: 'Notes', icon: 'Notes', link: '/notes' },
+  { label: 'Profile', icon: 'Profile', link: '/profile' },
 ];
 
 export const LeftSidebar = () => {

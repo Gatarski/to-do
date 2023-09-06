@@ -9,17 +9,23 @@ import {
   MAX_100_CHARS,
   MAX_20_CHARS,
   EventData,
+  ModalMessages,
 } from '@/utils/common';
 import { Input } from './UI/Input';
 import { Tabs } from './UI/Tabs';
 import { Datepicker } from './UI/Datepicker';
 import * as Yup from 'yup';
-import { postProjectAPI } from '@/lib/apiClient';
+import { createProjectAPI, editProjectAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
+import dayjs from 'dayjs';
 
-interface AddEventModalProps {
+type ModalType = 'add' | 'edit';
+
+interface EventModalProps {
   modalOpen: boolean;
   closeModal: Function;
+  mode: ModalType;
+  eventData?: EventData;
 }
 
 const EVENT_SCHEMA = [
@@ -53,7 +59,7 @@ const EVENT_SCHEMA = [
   },
 ];
 
-const initialValues: EventData = {
+const initValues: EventData = {
   title: '',
   shortDescription: '',
   priority: 'medium',
@@ -61,30 +67,34 @@ const initialValues: EventData = {
   status: 'pending',
 };
 
-export const AddEventModal = ({ modalOpen, closeModal }: AddEventModalProps) => {
+export const EventModal = ({ modalOpen, closeModal, mode, eventData }: EventModalProps) => {
+  const initialValues = getInitialValues(mode, eventData as EventData);
+
   const router = useRouter();
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async () => {
       const formValues = formik.values;
-      const response = await postProjectAPI(formValues);
-      if (response.status === 201) {
+      formValues.deadline = dayjs(formValues.deadline).format('YYYY-MM-DD');
+      const response = await formSubmit(mode, formValues);
+      if ([200, 201].includes(response.status)) {
         closeModal();
-        formik.resetForm();
         router.refresh();
       }
     },
   });
-  
+
+  const { title, subtitle } = getModalMessages(mode);
+
   return (
     <Modal width={'600px'} closable={false} open={modalOpen} footer={<></>}>
       <>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
             <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid">
-              <header className="text-base font-semibold">Add new event</header>
-              <p className="text-sx font-normal">Complete below form to add new event</p>
+              <header className="text-base font-semibold">{title}</header>
+              <p className="text-sx font-normal">{subtitle}</p>
             </div>
             <div>
               {EVENT_SCHEMA.map((event, index) => {
@@ -153,3 +163,34 @@ const validationSchema = Yup.object().shape({
     ),
   deadline: Yup.string().required(FIELD_REQUIRED_VALIDATION_MESSAGE),
 });
+
+const getModalMessages = (modalType: ModalType): ModalMessages => {
+  switch (modalType) {
+    case 'add':
+      return { title: 'Add new event', subtitle: 'Complete below form to add new event' };
+    case 'edit':
+      return {
+        title: 'Edit event',
+        subtitle: 'Complete below form to edit new event',
+      };
+    default:
+      return { title: '', subtitle: '' };
+  }
+};
+
+const getInitialValues = (modalType: ModalType, eventData: EventData): EventData => {
+  switch (modalType) {
+    case 'edit':
+      eventData.deadline = dayjs(eventData.deadline);
+      return eventData;
+    case 'add':
+    default:
+      return initValues;
+  }
+};
+
+const formSubmit = async (modalType: ModalType, values: EventData) => {
+  const apiResult =
+    modalType === 'add' ? await createProjectAPI(values) : await editProjectAPI(values);
+  return apiResult;
+};

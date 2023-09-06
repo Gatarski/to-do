@@ -9,6 +9,7 @@ import { AddNewItemCard } from './AddNewItemCard';
 import Tasks from '@/models/tasks';
 import Projects from '@/models/projects';
 import { DeleteItemButton } from './DeleteItemButton';
+import { EditEventButton } from './EditEventButton';
 
 interface EventProps {
   event: EventData | undefined;
@@ -23,7 +24,7 @@ export const Event = async ({ event }: EventProps) => {
 
   const areTasks = !!tasks.length;
   const tasksStyle = areTasks ? 'flex flex-wrap' : 'h-1/2 flex items-center justify-center';
-  const daysLeft = countDaysToEvent(event?.deadline);
+  const daysLeft = countDaysToEvent(event?.deadline as string);
 
   await changeProjectStatus(tasks, eventId);
 
@@ -40,7 +41,10 @@ export const Event = async ({ event }: EventProps) => {
                       <Link href="/home">
                         <div className="underline font-bold">Go back to events</div>
                       </Link>
-                        <DeleteItemButton itemType="event" id={eventId}/>
+                      <div className="flex justify-between">
+                        <DeleteItemButton itemType="event" id={eventId} text="Delete" />
+                        <EditEventButton text="Edit" eventData={event} />
+                      </div>
                     </div>
                     <div className="flex flex-col items-center">
                       <h1 className="text-3xl my-2 font-bold">{event.title}</h1>
@@ -49,7 +53,7 @@ export const Event = async ({ event }: EventProps) => {
                     <div className="flex">
                       <div className="flex flex-col">
                         <ChipWithTitle chipText={event.priority} chipTitle="Priority:" />
-                        <ChipWithTitle chipText={event.deadline} chipTitle="Deadline:" />
+                        <ChipWithTitle chipText={event.deadline as string} chipTitle="Deadline:" />
                       </div>
                       <div className="p-2 m-2 mb-6 flex items-center font-bold">
                         <div>{daysLeft} days left</div>
@@ -134,7 +138,7 @@ const countDaysToEvent = (deadline?: string): string => {
   if (deadline) {
     const deadlineDate = new Date(deadline);
     const currentDate = new Date();
-    const differenceBetweenDates = deadlineDate.getTime() - currentDate.getTime()
+    const differenceBetweenDates = deadlineDate.getTime() - currentDate.getTime();
 
     const daysToDeadline = differenceBetweenDates / (1000 * 3600 * 24);
     return daysToDeadline.toFixed();
@@ -143,13 +147,13 @@ const countDaysToEvent = (deadline?: string): string => {
 };
 
 const changeProjectStatus = async (tasks: TaskData[], projectId: number | undefined) => {
-  const areAllTasksDone = tasks.every(task => task.isDone) && tasks.length
-    await Projects.update(
-      { status: areAllTasksDone ? 'tasks done' : 'pending' },
-      {
-        where: {
-          id: projectId,
-        },
+  const areAllTasksDone = tasks.every(task => task.isDone) && tasks.length;
+  await Projects.update(
+    { status: areAllTasksDone ? 'tasks done' : 'pending' },
+    {
+      where: {
+        id: projectId,
       },
-    );
+    },
+  );
 };

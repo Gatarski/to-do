@@ -1,7 +1,8 @@
-import { AddEventModal } from '@/components/AddEventModal';
+import { EventModal } from '@/components/EventModal';
 import { AddTaskModal } from '@/components/AddTaskModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ItemType } from './common';
+import { message } from 'antd';
 
 export const useModalVisibility = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,10 +25,34 @@ export const displayModal = (
 ): JSX.Element => {
   switch (modalType) {
     case 'event':
-      return <AddEventModal modalOpen={isModalOpen} closeModal={closeModal} />;
+      return isModalOpen ? (
+        <EventModal modalOpen={isModalOpen} closeModal={closeModal} mode="add" />
+      ) : (
+        <></>
+      );
     case 'task':
-      return <AddTaskModal modalOpen={isModalOpen} closeModal={closeModal} eventId={eventId} />;
+      return isModalOpen ? (
+        <AddTaskModal modalOpen={isModalOpen} closeModal={closeModal} eventId={eventId} />
+      ) : (
+        <></>
+      );
     default:
       return <></>;
   }
+};
+
+export const useValidationMessage = (
+  messageToShow: string,
+  type: 'error' | 'success',
+  setApiError: Function,
+) => {
+  useEffect(() => {
+    if (messageToShow) {
+      message.open({
+        type,
+        content: messageToShow,
+      });
+    }
+    setApiError('');
+  }, [messageToShow, setApiError, type]);
 };

@@ -2,16 +2,14 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { IconType, LinkInterface } from './LeftSidebar';
-import {
-  SettingOutlined,
-  SettingTwoTone,
-  AppstoreOutlined,
-  AppstoreTwoTone,
-  FileTextOutlined,
-  FileTextTwoTone,
-} from '@ant-design/icons';
 import '../styles/global.css';
-import { ICON_SIZE } from '@/utils/common';
+import EventsBlueIcon from '../assets/icons/EventsBlueIcon.png';
+import EventsIcon from '../assets/icons/EventsIcon.png';
+import NotesBlueIcon from '../assets/icons/NotesBlueIcon.png';
+import NotesIcon from '../assets/icons/NotesIcon.png';
+import ProfileBlueIcon from '../assets/icons/ProfileBlueIcon.png';
+import ProfileIcon from '../assets/icons/ProfileIcon.png';
+import Image from 'next/image';
 
 export const SidebarLink = ({ link, icon, label }: LinkInterface) => {
   const pathname = usePathname();
@@ -30,35 +28,35 @@ const getIcon = (iconName: IconType, isLinkActive: boolean, label: string) => {
   } transition-transform hover:scale-105`;
 
   switch (iconName) {
-    case 'Appstore':
+    case 'Events':
       return (
         <div className={ICON_STYLE}>
           {isLinkActive ? (
-            <AppstoreTwoTone style={{ fontSize: ICON_SIZE }} />
+            <Image src={EventsBlueIcon} alt="Events icon" />
           ) : (
-            <AppstoreOutlined style={{ fontSize: ICON_SIZE }} />
+            <Image src={EventsIcon} alt="Events icon" />
           )}
           {label}
         </div>
       );
-    case 'Settings':
+    case 'Profile':
       return (
         <div className={ICON_STYLE}>
           {isLinkActive ? (
-            <SettingTwoTone style={{ fontSize: ICON_SIZE }} />
+            <Image src={ProfileBlueIcon} alt="Profile icon" />
           ) : (
-            <SettingOutlined style={{ fontSize: ICON_SIZE }} />
+            <Image src={ProfileIcon} alt="Profile icon" />
           )}
           {label}
         </div>
       );
-    case 'File':
+    case 'Notes':
       return (
         <div className={ICON_STYLE}>
           {isLinkActive ? (
-            <FileTextTwoTone style={{ fontSize: ICON_SIZE }} />
+            <Image src={NotesBlueIcon} alt="Notes icon" />
           ) : (
-            <FileTextOutlined style={{ fontSize: ICON_SIZE }} />
+            <Image src={NotesIcon} alt="Notes icon" />
           )}
           {label}
         </div>

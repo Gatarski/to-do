@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getIsUserLoggedIn } from '@/lib/auth';
+import Image from 'next/image';
+import ToDoListImage from '../assets/images/ToDoList.png';
 
 export const WelcomePage = async () => {
   const isUserLoggedIn = await getIsUserLoggedIn();
@@ -16,6 +18,9 @@ export const WelcomePage = async () => {
         <p className="tex-lg text-black/25">
           Create simple well organized event with tasks to not miss anything
         </p>
+        <div className="flex justify-center m-5">
+          <Image className={'w-[200px] h-[200px]'} src={ToDoListImage} alt="To do list" />
+        </div>
       </div>
       <div className="flex items-center justify-center">
         <div className="m-3 p-3">
