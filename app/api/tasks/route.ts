@@ -23,6 +23,6 @@ export const POST = async (request: NextRequest) => {
     return NextResponse.json({ error: WRONG_PROJECT }, { status: 401 });
   }
 
-  await Tasks.create(taskData);
+  await Tasks.create({ ...taskData, UserId: userId });
   return NextResponse.json({ message: 'Task created.', status: 201 }, { status: 201 });
 };

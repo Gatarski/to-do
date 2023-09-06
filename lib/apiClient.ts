@@ -82,7 +82,7 @@ export const editProjectAPI = async (projectData: EventData) => {
   try {
     return fetcher({
       url: `/api/projects/${projectData.id}`,
-      method: 'PUT',
+      method: 'POST',
       body: projectData,
     });
   } catch (error) {
@@ -144,6 +144,18 @@ export const editProfileAPI = async (profileData: ProfileData) => {
       url: '/api/profile',
       method: 'PUT',
       body: profileData,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const closeProjectAPI = async (id?: string) => {
+  try {
+    return fetcher({
+      url: `/api/projects/${id}`,
+      method: 'PUT',
+      body: {},
     });
   } catch (error) {
     console.log(error);

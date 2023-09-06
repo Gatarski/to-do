@@ -10,6 +10,7 @@ import Tasks from '@/models/tasks';
 import Projects from '@/models/projects';
 import { DeleteItemButton } from './DeleteItemButton';
 import { EditEventButton } from './EditEventButton';
+import { CloseEventButton } from './CloseEventButton';
 
 interface EventProps {
   event: EventData | undefined;
@@ -21,12 +22,13 @@ export const Event = async ({ event }: EventProps) => {
   }`;
   const eventId = event?.id;
   const tasks = await getTasks(eventId);
+  const isEventClosed = event?.status === 'closed';
 
   const areTasks = !!tasks.length;
   const tasksStyle = areTasks ? 'flex flex-wrap' : 'h-1/2 flex items-center justify-center';
   const daysLeft = countDaysToEvent(event?.deadline as string);
 
-  await changeProjectStatus(tasks, eventId);
+  await changeProjectStatus(tasks, eventId, event?.status);
 
   return (
     <>
@@ -41,7 +43,8 @@ export const Event = async ({ event }: EventProps) => {
                       <Link href="/home">
                         <div className="underline font-bold">Go back to events</div>
                       </Link>
-                      <div className="flex justify-between">
+                      <div className="flex justify-between gap-3">
+                        <CloseEventButton id={eventId} isClosed={isEventClosed} />
                         <DeleteItemButton itemType="event" id={eventId} text="Delete" />
                         <EditEventButton text="Edit" eventData={event} />
                       </div>
@@ -82,10 +85,16 @@ export const Event = async ({ event }: EventProps) => {
                           priority={task.priority}
                           isDone={task.isDone}
                           id={task.id}
+                          isDisabled={isEventClosed}
                         />
                       );
                     })}
-                    <AddNewItemCard buttonText="Add new task" itemType="task" eventId={eventId} />
+                    <AddNewItemCard
+                      buttonText="Add new task"
+                      itemType="task"
+                      eventId={eventId}
+                      isDisabled={isEventClosed}
+                    />
                   </>
                 ) : (
                   <NoData />
@@ -146,14 +155,22 @@ const countDaysToEvent = (deadline?: string): string => {
   return '';
 };
 
-const changeProjectStatus = async (tasks: TaskData[], projectId: number | undefined) => {
+const changeProjectStatus = async (
+  tasks: TaskData[],
+  projectId: number | undefined,
+  currentProjectStatus: string | undefined,
+) => {
   const areAllTasksDone = tasks.every(task => task.isDone) && tasks.length;
-  await Projects.update(
-    { status: areAllTasksDone ? 'tasks done' : 'pending' },
-    {
-      where: {
-        id: projectId,
+  const isProjectClosed = currentProjectStatus === 'closed';
+
+  if (!isProjectClosed) {
+    await Projects.update(
+      { status: areAllTasksDone ? 'tasks done' : 'pending' },
+      {
+        where: {
+          id: projectId,
+        },
       },
-    },
-  );
+    );
+  }
 };

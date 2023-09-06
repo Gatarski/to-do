@@ -50,14 +50,17 @@ export const getUserFromCookie = async () => {
   const cookie = cookies();
   const jwt = cookie.get(process.env.COOKIE_NAME as string);
 
-  const { id } = jwt && (await verifyJWT(jwt.value));
+  const jwtPayload = jwt && (await verifyJWT(jwt.value));
 
-  const user = await Users.findOne({
-    where: {
-      id: id,
-    },
-  });
-  return user;
+  if (jwtPayload.id) {
+    const user = await Users.findOne({
+      where: {
+        id: jwtPayload.id,
+      },
+    });
+    return user;
+  }
+  return undefined;
 };
 // this encode JWT from cookie - if pass we know that user is logged in
 export const getIsUserLoggedIn = async (): Promise<boolean> => {

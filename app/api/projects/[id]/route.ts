@@ -1,6 +1,5 @@
 import { getUserIdFromCookie } from '@/lib/auth';
 import { NextRequest, NextResponse } from 'next/server';
-import Tasks from '@/models/tasks';
 import Projects from '@/models/projects';
 
 interface ProjectParams {
@@ -11,14 +10,9 @@ interface ProjectProps {
   params: ProjectParams;
 }
 
-export const DELETE = async (request: NextRequest, { params }: ProjectProps) => {
+export const DELETE = async (_request: NextRequest, { params }: ProjectProps) => {
   const id = params.id;
   const userId = await getUserIdFromCookie();
-  const projectsFromDB = await Projects.findAll({
-    where: {
-      UserId: userId,
-    },
-  });
 
   const projectFromDB = await Projects.findOne({
     where: {
@@ -26,8 +20,8 @@ export const DELETE = async (request: NextRequest, { params }: ProjectProps) => 
     },
   });
 
-  // it check if Project belongs to logged user to avoid eg.: deleting from other users
-  const isCorrectProject = projectsFromDB.some(project => project.id?.toString() === id);
+  // security - check if Project belongs to logged user to
+  const isCorrectProject = projectFromDB?.UserId === userId;
 
   if (projectFromDB && isCorrectProject) {
     projectFromDB.destroy();
@@ -35,29 +29,57 @@ export const DELETE = async (request: NextRequest, { params }: ProjectProps) => 
   }
 };
 
-export const PUT = async (request: NextRequest, { params }: ProjectProps) => {
+export const POST = async (request: NextRequest, { params }: ProjectProps) => {
   const id = params.id;
   const projectData = await request.json();
   const userId = await getUserIdFromCookie();
 
-   const projectsFromDB = await Projects.findAll({
-     where: {
-       UserId: userId,
-     },
-   });
+  const projectFromDB = await Projects.findOne({
+    where: {
+      id: id,
+    },
+  });
 
-   // it check if Project belongs to logged user to avoid eg.: editing projects from other users
-   const isCorrectProject = projectsFromDB.some(project => project.id?.toString() === id);
- 
-   if (isCorrectProject) {
-     await Projects.update(
-       { ...projectData, UserId: userId },
-       {
-         where: {
-           id: id,
-         },
-       },
-     );
-      return NextResponse.json({ message: 'Project edited.', status: 200 }, { status: 200 });
-   }
+  // security - check if Project belongs to logged user to
+  const isCorrectProject = projectFromDB?.UserId === userId;
+
+  if (isCorrectProject) {
+    await Projects.update(
+      { ...projectData, UserId: userId },
+      {
+        where: {
+          id: id,
+        },
+      },
+    );
+    return NextResponse.json({ message: 'Project edited.', status: 200 }, { status: 200 });
+  }
+};
+
+export const PUT = async (_request: NextRequest, { params }: ProjectProps) => {
+  const id = params.id;
+  const userId = await getUserIdFromCookie();
+
+  const projectFromDB = await Projects.findOne({
+    where: {
+      id: id,
+    },
+  });
+
+  // security - check if Project belongs to logged user to
+  const isCorrectProject = projectFromDB?.UserId === userId;
+
+  if (isCorrectProject) {
+    const currentStatus = projectFromDB.dataValues.status;
+    const nextStatus = currentStatus === 'closed' ? 'pending' : 'closed';
+    await Projects.update(
+      { status: nextStatus },
+      {
+        where: {
+          id: id,
+        },
+      },
+    );
+    return NextResponse.json({ message: 'Project status changed.', status: 200 }, { status: 200 });
+  }
 };

@@ -3,6 +3,7 @@ import { MAX_70_CHARS, TaskData } from '@/utils/common';
 import { DataTypes, Model } from 'sequelize';
 
 export interface TasksDatabaseInterface extends TaskData {
+  UserId?: number;
   ProjectId?: number;
   createdAt?: string;
   updatedAt?: string;
@@ -29,6 +30,10 @@ const Tasks = database.db.define<TasksModelInterface>('Tasks', {
     allowNull: false,
   },
   ProjectId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  UserId: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },

@@ -9,7 +9,15 @@ interface ProfileProps {
 }
 
 export const Profile = ({ profileData, previewData }: ProfileProps) => {
-  const { projectsTotalNumber, projectsCompletedNumber, projectsWithCompletedTasks } = previewData;
+  const {
+    projectsTotalNumber,
+    projectsCompletedNumber,
+    projectsWithCompletedTasks,
+    tasksTotalNumber,
+    tasksCompletedNumber,
+    notesTotalNumber,
+    notesImportantNumber,
+  } = previewData;
 
   return (
     <Card className="w-full h-full bg-white border border-gray">
@@ -31,12 +39,15 @@ export const Profile = ({ profileData, previewData }: ProfileProps) => {
             />
           </div>
           <div className="w-1/4 flex flex-col justify-end gap-2">
-            <ChipWithTitle chipText="0" chipTitle="Total number of tasks:" />
-            <ChipWithTitle chipText="0" chipTitle="Number of completed tasks:" />
+            <ChipWithTitle chipText={tasksTotalNumber} chipTitle="Total number of tasks:" />
+            <ChipWithTitle chipText={tasksCompletedNumber} chipTitle="Number of completed tasks:" />
           </div>
           <div className="w-1/4 flex flex-col justify-end gap-2">
-            <ChipWithTitle chipText="0" chipTitle="Total number of notes:" />
-            <ChipWithTitle chipText="0" chipTitle="Total number of important notes:" />
+            <ChipWithTitle chipText={notesTotalNumber} chipTitle="Total number of notes:" />
+            <ChipWithTitle
+              chipText={notesImportantNumber}
+              chipTitle="Total number of important notes:"
+            />
           </div>
         </div>
         <div className="w-full flex flex-col items-center justify-center p-10">

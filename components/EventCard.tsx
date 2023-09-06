@@ -1,5 +1,5 @@
 import { Card } from './UI/Card';
-import { EventData } from '@/utils/common';
+import { EventData, EventStatus } from '@/utils/common';
 
 export const EventCard = ({ title, shortDescription, priority, deadline, status }: EventData) => {
   return (
@@ -9,22 +9,29 @@ export const EventCard = ({ title, shortDescription, priority, deadline, status 
         <p className="text-sm py-1">{shortDescription}</p>
         <div>
           <div className="text-sm py-1">{deadline as string}</div>
-          <div className={getStatusTextStyling(status)}>{status}</div>
+          <Tag status={status} />
         </div>
       </>
     </Card>
   );
 };
 
-const getStatusTextStyling = (status: 'pending' | 'closed' | 'tasks done') => {
+const getStyleForTag = (status: EventStatus): string => {
+  const commonTagStyle =
+    'inline-block px-2 py-1 border border-gray-300 rounded text-white text-sm font-bold';
+
   switch (status) {
     case 'pending':
-      return 'py-1 font-bold text-[#F6BE00] text-sm';
+      return `${commonTagStyle} bg-[#F6BE00]`;
     case 'closed':
-      return 'py-1 font-bold text-[#6D6F70] text-sm';
+      return `${commonTagStyle} bg-[#6D6F70]`;
     case 'tasks done':
-      return 'py-1 font-bold text-[#00FF00] text-sm';
-    default:
-      return 'py-1 text-sm';
+      return `${commonTagStyle} bg-[#228B22]`;
   }
+};
+
+const Tag = ({ status }: { status: EventStatus }): JSX.Element => {
+  const tagStyle = getStyleForTag(status);
+
+  return <span className={tagStyle}>{status}</span>;
 };

@@ -17,14 +17,14 @@ export const EditEventButton = ({ eventData, text }: EditEventButtonProps) => {
   return (
     <>
       <div
-        className="h-6 w-6 max-h-[36px] max-w-[36px] cursor-pointer transition-transform hover:scale-105 flex underline mt-0.5"
+        className="cursor-pointer transition-transform hover:scale-105 flex underline mt-0.5"
         onClick={e => {
           e.stopPropagation();
           openModal();
         }}
       >
-        <div className="">{text}</div>
-        <Image className={'ml-1'} src={EditIcon} alt="Edit icon" />
+        <div>{text}</div>
+        <Image className={'ml-1 h-6 w-6 '} src={EditIcon} alt="Edit icon" />
       </div>
       {isModalOpen && (
         <EventModal

@@ -14,7 +14,8 @@ interface EventsProps {
 }
 export const Events = async ({ event }: EventsProps) => {
   const events = await getEvents();
-  const filteredEvents = filterEvents(event, events);
+  const sortedEvents = sortEventsByStatus(events).reverse();
+  const filteredEvents = filterEvents(event, sortedEvents);
 
   const areEvents = !!filteredEvents.length;
   const eventsStyle = areEvents ? 'flex flex-wrap' : 'h-[60%] flex items-center justify-center';
@@ -78,4 +79,8 @@ const filterEvents = (filterValue: string, events: EventData[]): EventData[] => 
 
 const NoData = (): JSX.Element => {
   return <div className="text-3xl font-bold">No events</div>;
+};
+
+const sortEventsByStatus = (events: EventData[]): EventData[] => {
+  return events.sort((a, b) => a.status.localeCompare(b.status));
 };
