@@ -11,6 +11,7 @@ import Projects from '@/models/projects';
 import { DeleteItemButton } from './DeleteItemButton';
 import { EditEventButton } from './EditEventButton';
 import { CloseEventButton } from './CloseEventButton';
+import { NoData } from '@/utils/utils';
 
 interface EventProps {
   event: EventData | undefined;
@@ -28,7 +29,7 @@ export const Event = async ({ event }: EventProps) => {
   const tasksStyle = areTasks ? 'flex flex-wrap' : 'h-1/2 flex items-center justify-center';
   const daysLeft = countDaysToEvent(event?.deadline as string);
 
-  await changeProjectStatus(tasks, eventId, event?.status);
+  await changeProjectStatus(tasks, eventId, isEventClosed);
 
   return (
     <>
@@ -71,7 +72,7 @@ export const Event = async ({ event }: EventProps) => {
                   </div>
                 </div>
                 {!areTasks && (
-                  <AddNewItemButton buttonText="Add new task" itemType="task" eventId={eventId} />
+                  <AddNewItemButton buttonText="Add new task" itemType="task" eventId={eventId} isDisabled={isEventClosed}/>
                 )}
               </div>
               <div className={tasksStyle}>
@@ -97,7 +98,7 @@ export const Event = async ({ event }: EventProps) => {
                     />
                   </>
                 ) : (
-                  <NoData />
+                  <NoData message='No tasks'/>
                 )}
               </div>
             </div>
@@ -112,10 +113,6 @@ export const Event = async ({ event }: EventProps) => {
 
 const EventNotFound = (): JSX.Element => {
   return <div className="text-3xl font-bold">Event not found</div>;
-};
-
-const NoData = (): JSX.Element => {
-  return <div className="text-3xl font-bold">No tasks</div>;
 };
 
 const countCompletedTasks = (tasks: TaskData[]): string => {
@@ -158,12 +155,11 @@ const countDaysToEvent = (deadline?: string): string => {
 const changeProjectStatus = async (
   tasks: TaskData[],
   projectId: number | undefined,
-  currentProjectStatus: string | undefined,
+  isEventClosed: boolean,
 ) => {
   const areAllTasksDone = tasks.every(task => task.isDone) && tasks.length;
-  const isProjectClosed = currentProjectStatus === 'closed';
 
-  if (!isProjectClosed) {
+  if (!isEventClosed) {
     await Projects.update(
       { status: areAllTasksDone ? 'tasks done' : 'pending' },
       {

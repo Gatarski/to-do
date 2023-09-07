@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 import { loginUserAPI, registerUserAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import { Loader } from './UI/Loader';
-import { useValidationMessage } from '@/utils/utils';
+import { useValidationMessage } from '@/utils/clientUtils';
 
 type AuthMode = 'login' | 'register';
 

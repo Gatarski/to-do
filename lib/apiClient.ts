@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData, EventData, ProfileData } from '@/utils/common';
+import { AuthFormData, EventData, NoteData, ProfileData } from '@/utils/common';
 import { TasksDatabaseInterface } from '@/models/tasks';
 
 interface FetcherInterface {
@@ -156,6 +156,30 @@ export const closeProjectAPI = async (id?: string) => {
       url: `/api/projects/${id}`,
       method: 'PUT',
       body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createNoteAPI = async (noteData: NoteData) => {
+  try {
+    return fetcher({
+      url: '/api/notes',
+      method: 'POST',
+      body: noteData,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const editNoteAPI = async (noteData: NoteData) => {
+  try {
+    return fetcher({
+      url: `/api/notes/${noteData.id}`,
+      method: 'POST',
+      body: noteData,
     });
   } catch (error) {
     console.log(error);

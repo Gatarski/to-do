@@ -1,8 +1,9 @@
 'use client';
 import { logoutUserAPI } from '@/lib/apiClient';
-import { PoweroffOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import LogoutIcon from '../assets/icons/logoutIcon.png';
+import Image from 'next/image';
 
 export const Logout = () => {
   const router = useRouter();
@@ -13,12 +14,13 @@ export const Logout = () => {
   }
 
   return (
-    <PoweroffOutlined
-      style={{ fontSize: '30px' }}
+    <div
       onClick={async () => {
         await logoutUser(setIsLogout);
       }}
-    />
+    >
+      <Image src={LogoutIcon} alt="Logout icon" className="cursor-pointer" />
+    </div>
   );
 };
 

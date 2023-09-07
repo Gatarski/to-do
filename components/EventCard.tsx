@@ -1,5 +1,6 @@
+import { Tag } from './Tag';
 import { Card } from './UI/Card';
-import { EventData, EventStatus } from '@/utils/common';
+import { EventData } from '@/utils/common';
 
 export const EventCard = ({ title, shortDescription, priority, deadline, status }: EventData) => {
   return (
@@ -9,29 +10,9 @@ export const EventCard = ({ title, shortDescription, priority, deadline, status 
         <p className="text-sm py-1">{shortDescription}</p>
         <div>
           <div className="text-sm py-1">{deadline as string}</div>
-          <Tag status={status} />
+          <Tag tagType={status} />
         </div>
       </>
     </Card>
   );
-};
-
-const getStyleForTag = (status: EventStatus): string => {
-  const commonTagStyle =
-    'inline-block px-2 py-1 border border-gray-300 rounded text-white text-sm font-bold';
-
-  switch (status) {
-    case 'pending':
-      return `${commonTagStyle} bg-[#F6BE00]`;
-    case 'closed':
-      return `${commonTagStyle} bg-[#6D6F70]`;
-    case 'tasks done':
-      return `${commonTagStyle} bg-[#228B22]`;
-  }
-};
-
-const Tag = ({ status }: { status: EventStatus }): JSX.Element => {
-  const tagStyle = getStyleForTag(status);
-
-  return <span className={tagStyle}>{status}</span>;
 };

@@ -10,6 +10,7 @@ import {
   MAX_20_CHARS,
   EventData,
   ModalMessages,
+  ModalType,
 } from '@/utils/common';
 import { Input } from './UI/Input';
 import { Tabs } from './UI/Tabs';
@@ -18,8 +19,6 @@ import * as Yup from 'yup';
 import { createProjectAPI, editProjectAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
-
-type ModalType = 'add' | 'edit';
 
 interface EventModalProps {
   modalOpen: boolean;
@@ -138,7 +137,6 @@ export const EventModal = ({ modalOpen, closeModal, mode, eventData }: EventModa
                 buttonText="Cancel"
                 isDisabled={false}
                 onClick={() => {
-                  formik.resetForm();
                   closeModal();
                 }}
               />
@@ -171,7 +169,7 @@ const getModalMessages = (modalType: ModalType): ModalMessages => {
     case 'edit':
       return {
         title: 'Edit event',
-        subtitle: 'Complete below form to edit new event',
+        subtitle: 'Complete below form to edit event',
       };
     default:
       return { title: '', subtitle: '' };

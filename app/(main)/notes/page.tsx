@@ -1,3 +1,5 @@
+import { NotesPage as Notes } from "@/components/Notes";
+
 export default function NotesPage() {
-  return <div>Notes Page</div>;
+  return <Notes />;
 }

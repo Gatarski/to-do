@@ -1,5 +1,5 @@
 'use client';
-import { useModalVisibility } from '@/utils/utils';
+import { useModalVisibility } from '@/utils/clientUtils';
 import EditIcon from '../assets/icons/EditIcon.svg';
 import Image from 'next/image';
 import { EventModal } from './EventModal';

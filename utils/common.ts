@@ -27,12 +27,13 @@ export interface TaskData {
 
 export interface NoteData {
   id?: string;
-  text: string;
+  title: string;
+  note?: string;
   isImportant: boolean;
 }
 
 
-export type ItemType = 'event' | 'task';
+export type ItemType = 'event' | 'task' | 'note';
 
 export interface ModalMessages {
   title: string;
@@ -54,6 +55,9 @@ export interface PreviewData {
   notesImportantNumber: number;
 }
 
+export type ModalType = 'add' | 'edit';
+
+export const FIELD_MAX_200_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 200 characters`;
 export const FIELD_MAX_100_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 100 characters`;
 export const FIELD_MAX_70_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 70 characters`;
 export const FIELD_MAX_50_CHARS_VALIDATION_MESSAGE = `[fieldName] can't be longer 50 characters`;

@@ -6,7 +6,7 @@ import Button from './UI/Button';
 import * as Yup from 'yup';
 import { editProfileAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
-import { useValidationMessage } from '@/utils/utils';
+import { useValidationMessage } from '@/utils/clientUtils';
 import { useState } from 'react';
 
 export const ProfileForm = ({ profileData }: { profileData: ProfileData }) => {
@@ -34,7 +34,7 @@ export const ProfileForm = ({ profileData }: { profileData: ProfileData }) => {
   return (
     <div className="flex flex-col text-center">
       <FormikProvider value={formik}>
-        <h2 className="self-center text-2xl mb-3 p-1">Edit your profile</h2>
+        <h2 className="self-center text-2xl p-1">Edit your profile</h2>
         <form onSubmit={formik.handleSubmit}>
           <Input labelText="Email" name="email" id="email" placeholder="Email" disabled={true} />
           <Input

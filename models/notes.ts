@@ -1,5 +1,5 @@
 import database from '@/lib/database';
-import { MAX_200_CHARS, NoteData } from '@/utils/common';
+import { MAX_200_CHARS, MAX_20_CHARS, NoteData } from '@/utils/common';
 import { DataTypes, Model } from 'sequelize';
 
 export interface NotesDatabaseInterface extends NoteData {
@@ -16,7 +16,11 @@ const Notes = database.db.define<NotesModelInterface>('Notes', {
     primaryKey: true,
     autoIncrement: true,
   },
-  text: {
+  title: {
+    type: DataTypes.STRING(MAX_20_CHARS),
+    allowNull: false,
+  },
+  note: {
     type: DataTypes.STRING(MAX_200_CHARS),
     allowNull: false,
   },

@@ -36,7 +36,6 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
       const response = await createTaskAPI({ ...formValues, ProjectId: eventId });
       if (response.status === 201) {
         closeModal();
-        formik.resetForm();
         router.refresh();
       }
     },
@@ -71,7 +70,6 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
                 buttonText="Cancel"
                 isDisabled={false}
                 onClick={() => {
-                  formik.resetForm();
                   closeModal();
                 }}
               />

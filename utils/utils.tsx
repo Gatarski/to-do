@@ -1,21 +1,7 @@
 import { EventModal } from '@/components/EventModal';
 import { AddTaskModal } from '@/components/AddTaskModal';
-import { useEffect, useState } from 'react';
 import { ItemType } from './common';
-import { message } from 'antd';
-
-export const useModalVisibility = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
-
-  return {
-    isModalOpen,
-    openModal,
-    closeModal,
-  };
-};
+import { NoteModal } from '@/components/NoteModal';
 
 export const displayModal = (
   modalType: ItemType,
@@ -36,23 +22,17 @@ export const displayModal = (
       ) : (
         <></>
       );
+    case 'note':
+      return isModalOpen ? (
+        <NoteModal modalOpen={isModalOpen} closeModal={closeModal} mode="add" />
+      ) : (
+        <></>
+      );
     default:
       return <></>;
   }
 };
 
-export const useValidationMessage = (
-  messageToShow: string,
-  type: 'error' | 'success',
-  setApiError: Function,
-) => {
-  useEffect(() => {
-    if (messageToShow) {
-      message.open({
-        type,
-        content: messageToShow,
-      });
-    }
-    setApiError('');
-  }, [messageToShow, setApiError, type]);
+export const NoData = ({ message }: { message: string }): JSX.Element => {
+  return <div className="text-3xl font-bold">{message}</div>;
 };

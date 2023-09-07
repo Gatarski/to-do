@@ -3,7 +3,7 @@ import { PlusCircleTwoTone } from '@ant-design/icons';
 import { Card } from './UI/Card';
 import { ItemType } from '@/utils/common';
 import { displayModal } from '@/utils/utils';
-import { useModalVisibility } from '@/utils/utils';
+import { useModalVisibility } from '@/utils/clientUtils';
 import { useCallback } from 'react';
 
 interface AddNewItemCardProps {
@@ -21,13 +21,7 @@ export const AddNewItemCard = ({
   isDisabled = false,
 }: AddNewItemCardProps) => {
   const { isModalOpen, openModal, closeModal } = useModalVisibility();
-
-  const disabledCardStyle = 'bg-slate-100 transition-none hover:scale-100 cursor-not-allowed';
-  const cardStyle = `${
-    itemType === 'task' ? 'w-64 h-32' : 'w-48 h-48'
-  } m-4 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center items-center border border-dashed border-[#1677ff] hover:bg-gray-200 ${
-    isDisabled && disabledCardStyle
-  }`;
+  const cardStyle = getStyleForAddItemCard(isDisabled, itemType);
 
   const onClick = useOnClick(isDisabled, openModal);
   return (
@@ -51,4 +45,19 @@ const useOnClick = (isDisabled: boolean | undefined, openModal: Function) => {
       openModal();
     }
   }, [isDisabled]);
+};
+
+const getStyleForAddItemCard = (isDisabled: boolean | undefined, itemType: ItemType): string => {
+  const commonStyle = `${
+    itemType === 'task' ? 'w-64 h-32' : 'w-48 h-48'
+  } m-4 flex flex-col justify-center items-center border border-dashed border-[#1677ff]`;
+
+  switch (isDisabled) {
+    case true:
+      return `${commonStyle} cursor-not-allowed px-2 py-0 bg-slate-100`;
+    case false:
+      return `${commonStyle} cursor-pointer transition-transform hover:scale-105 px-2 py-0 hover:bg-gray-200`;
+    default:
+      return commonStyle;
+  }
 };

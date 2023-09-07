@@ -8,6 +8,7 @@ import Projects from '@/models/projects';
 import { getUserIdFromCookie } from '@/lib/auth';
 import Link from 'next/link';
 import { GuideBox } from './GuideBox';
+import { NoData } from '@/utils/utils';
 
 interface EventsProps {
   event: string;
@@ -47,7 +48,7 @@ export const Events = async ({ event }: EventsProps) => {
                 <AddNewItemCard buttonText="Add new event" itemType="event" />
               </>
             ) : (
-              <NoData />
+              <NoData message="No events" />
             )}
           </div>
         </>
@@ -75,10 +76,6 @@ const getEvents = async (): Promise<EventData[]> => {
 
 const filterEvents = (filterValue: string, events: EventData[]): EventData[] => {
   return filterValue ? events.filter(event => event.title.includes(filterValue)) : events;
-};
-
-const NoData = (): JSX.Element => {
-  return <div className="text-3xl font-bold">No events</div>;
 };
 
 const sortEventsByStatus = (events: EventData[]): EventData[] => {
