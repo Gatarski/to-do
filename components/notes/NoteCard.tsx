@@ -1,7 +1,7 @@
-import { Tag } from './Tag';
-import { Card } from './UI/Card';
+import { Tag } from '../UI/Tag';
+import { Card } from '../UI/Card';
 import { NoteData } from '@/utils/common';
-import NotesIcon from '../assets/icons/NotesIcon.png';
+import NotesIcon from '../../assets/icons/NotesIcon.png';
 import Image from 'next/image';
 
 export const NoteCard = ({ title, isImportant }: NoteData) => {

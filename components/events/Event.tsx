@@ -1,15 +1,15 @@
 import { EventData, TaskData } from '@/utils/common';
 import { Card } from '@/components/UI/Card';
-import { GuideBox } from './GuideBox';
-import { ChipWithTitle } from './ChipWIthTitle';
+import { GuideBox } from '../UI/GuideBox';
+import { ChipWithTitle } from '../UI/ChipWIthTitle';
 import Link from 'next/link';
-import { TaskCard } from './TaskCard';
-import { AddNewItemButton } from './AddNewItemButton';
-import { AddNewItemCard } from './AddNewItemCard';
+import { TaskCard } from '../tasks/TaskCard';
+import { AddNewItemButton } from '../AddNewItemButton';
+import { AddNewItemCard } from '../AddNewItemCard';
 import Tasks from '@/models/tasks';
 import Projects from '@/models/projects';
-import { DeleteItemButton } from './DeleteItemButton';
-import { EditItemButton } from './EditItemButton';
+import { DeleteItemButton } from '../DeleteItemButton';
+import { EditItemButton } from '../EditItemButton';
 import { CloseEventButton } from './CloseEventButton';
 import { NoData } from '@/utils/utils';
 

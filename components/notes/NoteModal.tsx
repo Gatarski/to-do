@@ -1,6 +1,6 @@
 'use client';
 import { Modal } from 'antd';
-import Button from './UI/Button';
+import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
   FIELD_MAX_200_CHARS_VALIDATION_MESSAGE,
@@ -12,12 +12,12 @@ import {
   ModalType,
   NoteData,
 } from '@/utils/common';
-import { TextArea } from './UI/TextArea';
+import { TextArea } from '../UI/TextArea';
 import * as Yup from 'yup';
 import { createNoteAPI, editNoteAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
-import { Input } from './UI/Input';
-import { Switch } from './UI/Switch';
+import { Input } from '../UI/Input';
+import { Switch } from '../UI/Switch';
 
 interface NoteModalProps {
   modalOpen: boolean;

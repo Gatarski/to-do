@@ -1,13 +1,13 @@
-import { Card } from './UI/Card';
+import { Card } from '../UI/Card';
 import { EventData } from '@/utils/common';
 import { EventCard } from './EventCard';
-import { AddNewItemCard } from './AddNewItemCard';
+import { AddNewItemCard } from '../AddNewItemCard';
 import { SearchBar } from './SearchBar';
-import { AddNewItemButton } from './AddNewItemButton';
+import { AddNewItemButton } from '../AddNewItemButton';
 import Projects from '@/models/projects';
 import { getUserIdFromCookie } from '@/lib/auth';
 import Link from 'next/link';
-import { GuideBox } from './GuideBox';
+import { GuideBox } from '../UI/GuideBox';
 import { NoData } from '@/utils/utils';
 
 interface EventsProps {

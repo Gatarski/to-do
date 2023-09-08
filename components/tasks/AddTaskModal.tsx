@@ -1,6 +1,6 @@
 'use client';
 import { Modal } from 'antd';
-import Button from './UI/Button';
+import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
   FIELD_MAX_70_CHARS_VALIDATION_MESSAGE,
@@ -8,8 +8,8 @@ import {
   MAX_70_CHARS,
   TaskData,
 } from '@/utils/common';
-import { TextArea } from './UI/TextArea';
-import { Tabs } from './UI/Tabs';
+import { TextArea } from '../UI/TextArea';
+import { Tabs } from '../UI/Tabs';
 import * as Yup from 'yup';
 import { createTaskAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';

@@ -1,5 +1,5 @@
 import { getUserFromCookie } from '@/lib/auth';
-import { Logout } from './Logout';
+import { Logout } from './UI/Logout';
 import { UserDatabaseInterface } from '@/models/users';
 
 export const TopPanel = async () => {

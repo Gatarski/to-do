@@ -1,7 +1,7 @@
 import { NoteData } from '@/utils/common';
 import { getUserIdFromCookie } from '@/lib/auth';
 import Notes, { NotesDatabaseInterface } from '@/models/notes';
-import { Note } from '@/components/Note';
+import { Note } from '@/components/notes/Note';
 
 interface NotePageProps {
   params: { id: string };

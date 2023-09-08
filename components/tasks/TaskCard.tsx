@@ -1,11 +1,11 @@
 'use client';
-import { ChipWithTitle } from './ChipWIthTitle';
-import { Card } from './UI/Card';
+import { ChipWithTitle } from '../UI/ChipWIthTitle';
+import { Card } from '../UI/Card';
 import { TaskData } from '@/utils/common';
-import '../styles/taskCard.css';
+import '../../styles/taskCard.css';
 import { doneTaskAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
-import { DeleteItemButton } from './DeleteItemButton';
+import { DeleteItemButton } from '../DeleteItemButton';
 import { useCallback } from 'react';
 
 export const TaskCard = ({ task, priority, isDone, id, isDisabled }: TaskData) => {

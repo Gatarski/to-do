@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import { serialize } from 'cookie';
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 // this is used to hash password which will be saved on db
 export const hashPassword = (password: string): Promise<string> => bcrypt.hash(password, 10);
@@ -60,7 +61,7 @@ export const getUserFromCookie = async () => {
     });
     return user;
   }
-  return undefined;
+  redirect('/')
 };
 // this encode JWT from cookie - if pass we know that user is logged in
 export const getIsUserLoggedIn = async (): Promise<boolean> => {

@@ -1,7 +1,7 @@
-import { EventModal } from '@/components/EventModal';
-import { AddTaskModal } from '@/components/AddTaskModal';
+import { EventModal } from '@/components/events/EventModal';
+import { AddTaskModal } from '@/components/tasks/AddTaskModal';
 import { ItemType } from './common';
-import { NoteModal } from '@/components/NoteModal';
+import { NoteModal } from '@/components/notes/NoteModal';
 
 export const displayAddModal = (
   modalType: ItemType,

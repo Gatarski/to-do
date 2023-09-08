@@ -1,4 +1,4 @@
-import { Profile } from '@/components/Profile';
+import { Profile } from '@/components/profile/Profile';
 import { getUserFromCookie } from '@/lib/auth';
 import Notes from '@/models/notes';
 import Projects from '@/models/projects';

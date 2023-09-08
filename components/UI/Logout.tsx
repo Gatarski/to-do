@@ -2,7 +2,7 @@
 import { logoutUserAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import LogoutIcon from '../assets/icons/logoutIcon.png';
+import LogoutIcon from '../../assets/icons/logoutIcon.png';
 import Image from 'next/image';
 
 export const Logout = () => {

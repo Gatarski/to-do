@@ -1,4 +1,4 @@
-import InfoIcon from '../assets/icons/InfoIcon.svg';
+import InfoIcon from '../../assets/icons/InfoIcon.svg';
 import Image from 'next/image';
 
 interface GuidePanelProps {

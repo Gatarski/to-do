@@ -2,9 +2,9 @@
 import { useModalVisibility } from '@/utils/clientUtils';
 import EditIcon from '../assets/icons/EditIcon.svg';
 import Image from 'next/image';
-import { EventModal } from './EventModal';
+import { EventModal } from './events/EventModal';
 import { EventData, NoteData } from '@/utils/common';
-import { NoteModal } from './NoteModal';
+import { NoteModal } from './notes/NoteModal';
 
 interface EditItemButtonProps {
   itemType: 'event' | 'note';

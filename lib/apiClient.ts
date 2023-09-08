@@ -197,3 +197,15 @@ export const editNoteAPI = async (noteData: NoteData) => {
     console.log(error);
   }
 };
+
+export const deleteUserAPI = async () => {
+  try {
+    return fetcher({
+      url: '/api/profile',
+      method: 'DELETE',
+      body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};

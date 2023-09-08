@@ -1,6 +1,6 @@
 'use client';
 import { closeProjectAPI } from '@/lib/apiClient';
-import Button from './UI/Button';
+import Button from '../UI/Button';
 import { useRouter } from 'next/navigation';
 
 interface CloseEventButtonProps {

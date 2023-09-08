@@ -1,10 +1,10 @@
 import { NoteData } from '@/utils/common';
 import { Card } from '@/components/UI/Card';
-import { GuideBox } from './GuideBox';
+import { GuideBox } from '../UI/GuideBox';
 import Link from 'next/link';
-import { DeleteItemButton } from './DeleteItemButton';
-import { Tag } from './Tag';
-import { EditItemButton } from './EditItemButton';
+import { DeleteItemButton } from '../DeleteItemButton';
+import { Tag } from '../UI/Tag';
+import { EditItemButton } from '../EditItemButton';
 
 interface NoteProps {
   note: NoteData | undefined;

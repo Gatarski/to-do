@@ -1,8 +1,8 @@
 'use client';
 import { FormikProvider, useFormik } from 'formik';
-import { Input } from './UI/Input';
+import { Input } from '../UI/Input';
 import { FIELD_MAX_50_CHARS_VALIDATION_MESSAGE, MAX_50_CHARS, ProfileData } from '@/utils/common';
-import Button from './UI/Button';
+import Button from '../UI/Button';
 import * as Yup from 'yup';
 import { editProfileAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';

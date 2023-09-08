@@ -1,6 +1,6 @@
 'use client';
 import { Modal } from 'antd';
-import Button from './UI/Button';
+import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
   FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
@@ -12,9 +12,9 @@ import {
   ModalMessages,
   ModalType,
 } from '@/utils/common';
-import { Input } from './UI/Input';
-import { Tabs } from './UI/Tabs';
-import { Datepicker } from './UI/Datepicker';
+import { Input } from '../UI/Input';
+import { Tabs } from '../UI/Tabs';
+import { Datepicker } from '../UI/Datepicker';
 import * as Yup from 'yup';
 import { createProjectAPI, editProjectAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';

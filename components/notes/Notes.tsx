@@ -1,10 +1,10 @@
-import { Card } from './UI/Card';
-import { EventData, NoteData } from '@/utils/common';
-import { AddNewItemCard } from './AddNewItemCard';
+import { Card } from '../UI/Card';
+import { NoteData } from '@/utils/common';
+import { AddNewItemCard } from '../AddNewItemCard';
 import Notes from '@/models/notes';
 import { getUserIdFromCookie } from '@/lib/auth';
-import { GuideBox } from './GuideBox';
-import { AddNewItemButton } from './AddNewItemButton';
+import { GuideBox } from '../UI/GuideBox';
+import { AddNewItemButton } from '../AddNewItemButton';
 import { NoData } from '@/utils/utils';
 import Link from 'next/link';
 import { NoteCard } from './NoteCard';

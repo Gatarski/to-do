@@ -1,8 +1,8 @@
-import { Tag } from './Tag';
-import { Card } from './UI/Card';
+import { Tag } from '../UI/Tag';
+import { Card } from '../UI/Card';
 import { EventData } from '@/utils/common';
 
-export const EventCard = ({ title, shortDescription, priority, deadline, status }: EventData) => {
+export const EventCard = ({ title, shortDescription, deadline, status }: EventData) => {
   return (
     <Card className="m-4 w-48 h-48 min-w-48 min-h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center">
       <>

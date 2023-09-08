@@ -1,7 +1,7 @@
 import { EventData } from '@/utils/common';
 import Projects from '@/models/projects';
 import { ProjectDatabaseInterface } from '@/models/projects';
-import { Event } from '@/components/Event';
+import { Event } from '@/components/events/Event';
 import { getUserIdFromCookie } from '@/lib/auth';
 
 interface EventPageProps {

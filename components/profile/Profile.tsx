@@ -1,5 +1,6 @@
-import { Card } from './UI/Card';
-import { ChipWithTitle } from './ChipWIthTitle';
+import { Card } from '../UI/Card';
+import { ChipWithTitle } from '../UI/ChipWIthTitle';
+import { DeleteUserButton } from './DeleteUserButton';
 import { ProfileForm } from './ProfileForm';
 import { PreviewData, ProfileData } from '@/utils/common';
 
@@ -54,8 +55,11 @@ export const Profile = ({ profileData, previewData }: ProfileProps) => {
             />
           </div>
         </div>
-        <div className="w-full flex flex-col items-center justify-center p-5">
-          <div className="w-1/3">
+        <div className="w-full flex flex-col p-5">
+          <div className="self-end justify-self-end">
+            <DeleteUserButton></DeleteUserButton>
+          </div>
+          <div className='self-center w-1/3'>
             <ProfileForm profileData={profileData}></ProfileForm>
           </div>
         </div>
