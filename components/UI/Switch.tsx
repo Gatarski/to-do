@@ -20,6 +20,7 @@ export const Switch: FC<SwitchProps> = ({ labelText, name, ...rest }) => {
         onChange={(value: boolean) => {
           setValue(value);
         }}
+        defaultChecked={field.value}
       />
     </div>
   );

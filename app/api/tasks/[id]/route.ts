@@ -3,12 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import Tasks from '@/models/tasks';
 import Projects from '@/models/projects';
 
-interface TaskParams {
-  id: string;
-}
-
 interface TaskProps {
-  params: TaskParams;
+  params: { id : string };
 }
 export const PUT = async (_request: NextRequest, { params }: TaskProps) => {
   const id = params.id;

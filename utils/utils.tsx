@@ -3,7 +3,7 @@ import { AddTaskModal } from '@/components/AddTaskModal';
 import { ItemType } from './common';
 import { NoteModal } from '@/components/NoteModal';
 
-export const displayModal = (
+export const displayAddModal = (
   modalType: ItemType,
   isModalOpen: boolean,
   closeModal: Function,

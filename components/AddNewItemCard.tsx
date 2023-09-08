@@ -2,7 +2,7 @@
 import { PlusCircleTwoTone } from '@ant-design/icons';
 import { Card } from './UI/Card';
 import { ItemType } from '@/utils/common';
-import { displayModal } from '@/utils/utils';
+import { displayAddModal } from '@/utils/utils';
 import { useModalVisibility } from '@/utils/clientUtils';
 import { useCallback } from 'react';
 
@@ -34,7 +34,7 @@ export const AddNewItemCard = ({
           </>
         </Card>
       </div>
-      {displayModal(itemType, isModalOpen, closeModal, eventId)}
+      {displayAddModal(itemType, isModalOpen, closeModal, eventId)}
     </>
   );
 };
@@ -49,7 +49,7 @@ const useOnClick = (isDisabled: boolean | undefined, openModal: Function) => {
 
 const getStyleForAddItemCard = (isDisabled: boolean | undefined, itemType: ItemType): string => {
   const commonStyle = `${
-    itemType === 'task' ? 'w-64 h-32' : 'w-48 h-48'
+    itemType === 'event' ? 'w-48 h-48' : 'w-64 h-32'
   } m-4 flex flex-col justify-center items-center border border-dashed border-[#1677ff]`;
 
   switch (isDisabled) {

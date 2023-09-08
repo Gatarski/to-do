@@ -4,12 +4,8 @@ import { ProjectDatabaseInterface } from '@/models/projects';
 import { Event } from '@/components/Event';
 import { getUserIdFromCookie } from '@/lib/auth';
 
-interface EventPageParams {
-  id: string;
-}
-
 interface EventPageProps {
-  params: EventPageParams;
+  params: { id: string };
 }
 
 export default async function EventPage({ params }: EventPageProps) {

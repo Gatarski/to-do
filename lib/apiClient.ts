@@ -138,6 +138,18 @@ export const deleteProjectAPI = async (id: string | number | undefined) => {
   }
 };
 
+export const deleteNoteAPI = async (id: string | number | undefined) => {
+  try {
+    return fetcher({
+      url: `/api/notes/${id}`,
+      method: 'DELETE',
+      body: {},
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const editProfileAPI = async (profileData: ProfileData) => {
   try {
     return fetcher({

@@ -3,7 +3,8 @@ import { ItemType, ModalMessages } from '@/utils/common';
 import { Modal } from 'antd';
 import { useRouter } from 'next/navigation';
 import Button from './UI/Button';
-import { deleteProjectAPI, deleteTaskAPI } from '@/lib/apiClient';
+import { deleteNoteAPI, deleteProjectAPI, deleteTaskAPI } from '@/lib/apiClient';
+import { useCallback } from 'react';
 
 interface DeleteItemModalProps {
   modalOpen: boolean;
@@ -37,7 +38,7 @@ interface ModalFooterProps {
 }
 
 const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Element => {
-  const router = useRouter();
+  const redirectAction = useRedirectAction(itemType);
 
   return (
     <>
@@ -55,8 +56,7 @@ const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Elemen
         type="primary"
         onClick={async () => {
           await deleteAction(itemType, id);
-          itemType === 'event' && router.replace('/home');
-          router.refresh();
+          redirectAction();
         }}
       />
     </>
@@ -73,11 +73,37 @@ const getModalMessages = (itemType: ItemType): ModalMessages => {
         subtitle:
           'Are you sure you want delete event? All tasks inside this event will be deleted.',
       };
+    case 'note':
+      return { title: 'Delete note', subtitle: 'Are you sure you want delete note?' };
     default:
       return { title: 'Delete item', subtitle: 'Are you sure you want delete item?' };
   }
 };
 
 const deleteAction = async (itemType: ItemType, id: string | number | undefined) => {
-  itemType === 'event' ? await deleteProjectAPI(id) : await deleteTaskAPI(id);
+  switch (itemType) {
+    case 'event':
+      return await deleteProjectAPI(id);
+    case 'task':
+      return await deleteTaskAPI(id);
+    case 'note':
+      return await deleteNoteAPI(id);
+  }
+};
+
+const useRedirectAction = (itemType: ItemType) => {
+  const router = useRouter();
+
+  return useCallback(() => {
+    switch (itemType) {
+      case 'event':
+        router.replace('/home');
+        router.refresh();
+      case 'task':
+        router.refresh();
+      case 'note':
+        router.replace('/notes');
+        router.refresh();
+    }
+  }, [itemType]);
 };

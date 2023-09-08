@@ -35,7 +35,7 @@ export const TextArea: FC<TextAreaProps> = ({
     <div className="m-3 p-2 text-left">
       <label className={`text-xs ${isError && 'text-red-600'}`}>{labelText}</label>
       <AntTextArea
-        className={`pl-1 leading-normal rounded-none h-10 ${
+        className={`pl-1 leading-normal rounded-none h-20 ${
           isError && 'border-red-600 hover:border-red-600'
         }`}
         {...rest}
@@ -44,6 +44,7 @@ export const TextArea: FC<TextAreaProps> = ({
         onBlur={onBlur}
         onFocus={onFocus}
         maxLength={maxLength}
+        showCount={true}
       />
       <div className="text-xs text-red-600">{isError ? meta.error : ''}</div>
     </div>

@@ -9,7 +9,7 @@ import { AddNewItemCard } from './AddNewItemCard';
 import Tasks from '@/models/tasks';
 import Projects from '@/models/projects';
 import { DeleteItemButton } from './DeleteItemButton';
-import { EditEventButton } from './EditEventButton';
+import { EditItemButton } from './EditItemButton';
 import { CloseEventButton } from './CloseEventButton';
 import { NoData } from '@/utils/utils';
 
@@ -47,7 +47,7 @@ export const Event = async ({ event }: EventProps) => {
                       <div className="flex justify-between gap-3">
                         <CloseEventButton id={eventId} isClosed={isEventClosed} />
                         <DeleteItemButton itemType="event" id={eventId} text="Delete" />
-                        <EditEventButton text="Edit" eventData={event} />
+                        <EditItemButton itemType="event" data={event} />
                       </div>
                     </div>
                     <div className="flex flex-col items-center">
@@ -72,7 +72,12 @@ export const Event = async ({ event }: EventProps) => {
                   </div>
                 </div>
                 {!areTasks && (
-                  <AddNewItemButton buttonText="Add new task" itemType="task" eventId={eventId} isDisabled={isEventClosed}/>
+                  <AddNewItemButton
+                    buttonText="Add new task"
+                    itemType="task"
+                    eventId={eventId}
+                    isDisabled={isEventClosed}
+                  />
                 )}
               </div>
               <div className={tasksStyle}>
@@ -98,7 +103,7 @@ export const Event = async ({ event }: EventProps) => {
                     />
                   </>
                 ) : (
-                  <NoData message='No tasks'/>
+                  <NoData message="No tasks" />
                 )}
               </div>
             </div>

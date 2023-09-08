@@ -10,7 +10,7 @@ export const Tag = ({ tagType }: { tagType: TagTypes }): JSX.Element => {
 
 const getStyleForTag = (tagType: TagTypes): string => {
   const commonTagStyle =
-    'inline-block px-2 py-1 border border-gray-300 rounded text-white text-sm font-bold';
+    'h-8 inline-block px-2 py-1 border border-gray-300 rounded text-white text-sm font-bold';
 
   switch (tagType) {
     case 'pending':

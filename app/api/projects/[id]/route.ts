@@ -2,12 +2,8 @@ import { getUserIdFromCookie } from '@/lib/auth';
 import { NextRequest, NextResponse } from 'next/server';
 import Projects from '@/models/projects';
 
-interface ProjectParams {
-  id: string;
-}
-
 interface ProjectProps {
-  params: ProjectParams;
+  params: { id: string };
 }
 
 export const DELETE = async (_request: NextRequest, { params }: ProjectProps) => {
