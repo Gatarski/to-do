@@ -6,7 +6,7 @@ import Button from '../UI/Button';
 import * as Yup from 'yup';
 import { editProfileAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
-import { useValidationMessage } from '@/utils/clientUtils';
+import { useValidationMessage } from '@/utils/client-utils';
 import { useState } from 'react';
 
 export const ProfileForm = ({ profileData }: { profileData: ProfileData }) => {

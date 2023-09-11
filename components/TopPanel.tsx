@@ -1,6 +1,7 @@
 import { getUserFromCookie } from '@/lib/auth';
 import { Logout } from './UI/Logout';
 import { UserDatabaseInterface } from '@/models/users';
+import { getCurrentDate } from '@/utils/utils';
 
 export const TopPanel = async () => {
   const user = await getUserFromCookie();
@@ -22,5 +23,3 @@ export const TopPanel = async () => {
     </div>
   );
 };
-
-const getCurrentDate = () => new Date().toJSON().slice(0, 10);

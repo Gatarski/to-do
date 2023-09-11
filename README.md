@@ -1,3 +1,10 @@
+yarn install or npm install
+
+npm run dev
+
+npm run test
+
+
 TO DO - HERE:
 
 

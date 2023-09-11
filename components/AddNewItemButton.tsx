@@ -1,7 +1,7 @@
 'use client';
 import { displayAddModal } from '@/utils/utils';
 import Button from './UI/Button';
-import { useModalVisibility } from '@/utils/clientUtils';
+import { useModalVisibility } from '@/utils/client-utils';
 import { ItemType } from '@/utils/common';
 
 interface AddNewItemButtonProps {

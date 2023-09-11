@@ -3,7 +3,7 @@ import { PlusCircleTwoTone } from '@ant-design/icons';
 import { Card } from './UI/Card';
 import { ItemType } from '@/utils/common';
 import { displayAddModal } from '@/utils/utils';
-import { useModalVisibility } from '@/utils/clientUtils';
+import { useModalVisibility } from '@/utils/client-utils';
 import { useCallback } from 'react';
 
 interface AddNewItemCardProps {

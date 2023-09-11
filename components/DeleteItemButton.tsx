@@ -1,5 +1,5 @@
 'use client';
-import { useModalVisibility } from '@/utils/clientUtils';
+import { useModalVisibility } from '@/utils/client-utils';
 import { ItemType } from '@/utils/common';
 import TrashIcon from '../assets/icons/TrashIcon.svg';
 import Image from 'next/image';

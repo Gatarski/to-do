@@ -1,6 +1,6 @@
 'use client';
 import { DeleteUserModal } from './DeleteUserModal';
-import { useModalVisibility } from '@/utils/clientUtils';
+import { useModalVisibility } from '@/utils/client-utils';
 
 export const DeleteUserButton = () => {
   const { isModalOpen, openModal, closeModal } = useModalVisibility();
