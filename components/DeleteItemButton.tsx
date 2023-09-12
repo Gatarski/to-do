@@ -1,6 +1,6 @@
 'use client';
 import { useModalVisibility } from '@/utils/client-utils';
-import { ItemType } from '@/utils/common';
+import { ItemType } from '@/types/types';
 import TrashIcon from '../assets/icons/TrashIcon.svg';
 import Image from 'next/image';
 import { DeleteItemModal } from './DeleteItemModal';
@@ -24,7 +24,7 @@ export const DeleteItemButton = ({ itemType, id, text }: DeleteItemButtonProps) 
           openModal();
         }}
       >
-        <div className="pt-0.5">{text}</div>
+      <div className="pt-0.5">{text}</div>
         <Image className="h-6 w-6 " src={TrashIcon} alt="Trash icon" />
       </div>
       <DeleteItemModal

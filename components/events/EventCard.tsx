@@ -1,6 +1,6 @@
 import { Tag } from '../UI/Tag';
 import { Card } from '../UI/Card';
-import { EventData } from '@/utils/common';
+import { EventData } from '@/types/types';
 
 export const EventCard = ({ title, shortDescription, deadline, status }: EventData) => {
   return (

@@ -4,7 +4,7 @@ import Notes from '@/models/notes';
 import Projects from '@/models/projects';
 import Tasks from '@/models/tasks';
 import { UserDatabaseInterface } from '@/models/users';
-import { PreviewData, ProfileData } from '@/utils/common';
+import { PreviewData, ProfileData } from '@/types/types';
 
 export default async function ProfilePage() {
   const user = await getUserFromCookie();

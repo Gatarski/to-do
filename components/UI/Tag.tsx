@@ -1,4 +1,4 @@
-import { EventStatus } from '@/utils/common';
+import { EventStatus } from '@/types/types';
 
 type TagTypes = EventStatus | 'major' | 'minor';
 
@@ -14,14 +14,14 @@ const getStyleForTag = (tagType: TagTypes): string => {
 
   switch (tagType) {
     case 'pending':
-      return `${commonTagStyle} bg-[#F6BE00]`;
+      return `${commonTagStyle} bg-amber-400`;
     case 'closed':
-      return `${commonTagStyle} bg-[#6D6F70]`;
+      return `${commonTagStyle} bg-neutral-500`;
     case 'tasks done':
-      return `${commonTagStyle} bg-[#228B22]`;
+      return `${commonTagStyle} bg-green-700`;
     case 'major':
-      return `${commonTagStyle} bg-[#FF5C5C]`;
+      return `${commonTagStyle} bg-red-500`;
     case 'minor':
-      return `${commonTagStyle} bg-[#99CCFF]`;
+      return `${commonTagStyle} bg-blue-300`;
   }
 };

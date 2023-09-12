@@ -1,5 +1,9 @@
 import database from '@/lib/database';
-import { MAX_200_CHARS, MAX_20_CHARS, NoteData } from '@/utils/common';
+import { NoteData } from '@/types/types';
+import {
+  MAX_200_CHARS,
+  MAX_20_CHARS,
+} from '@/constants/charactersLimits';
 import { DataTypes, Model } from 'sequelize';
 
 export interface NotesDatabaseInterface extends NoteData {

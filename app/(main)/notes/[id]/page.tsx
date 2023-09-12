@@ -1,4 +1,4 @@
-import { NoteData } from '@/utils/common';
+import { NoteData } from '@/types/types';
 import { getUserIdFromCookie } from '@/lib/auth';
 import Notes, { NotesDatabaseInterface } from '@/models/notes';
 import { Note } from '@/components/notes/Note';

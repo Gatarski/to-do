@@ -1,5 +1,5 @@
 'use client';
-import { ItemType } from '@/utils/common';
+import { ItemType } from '@/types/types';
 import { Input } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';

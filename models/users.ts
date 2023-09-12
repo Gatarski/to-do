@@ -1,5 +1,8 @@
 import database from '@/lib/database';
-import { MAX_50_CHARS, AuthFormData } from '@/utils/common';
+import { AuthFormData } from '@/types/types';
+import {
+  MAX_50_CHARS,
+} from '@/constants/charactersLimits';
 import { DataTypes, Model } from 'sequelize';
 
 export interface UserDatabaseInterface extends AuthFormData {

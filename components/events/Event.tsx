@@ -1,4 +1,4 @@
-import { EventData, TaskData } from '@/utils/common';
+import { EventData, TaskData } from '@/types/types';
 import { Card } from '@/components/UI/Card';
 import { GuideBox } from '../UI/GuideBox';
 import { ChipWithTitle } from '../UI/ChipWIthTitle';

@@ -1,6 +1,6 @@
 import { Tag } from '../UI/Tag';
 import { Card } from '../UI/Card';
-import { NoteData } from '@/utils/common';
+import { NoteData } from '@/types/types';
 import NotesIcon from '../../assets/icons/NotesIcon.png';
 import Image from 'next/image';
 

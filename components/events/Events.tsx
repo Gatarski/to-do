@@ -1,5 +1,5 @@
 import { Card } from '../UI/Card';
-import { EventData } from '@/utils/common';
+import { EventData } from '@/types/types';
 import { EventCard } from './EventCard';
 import { AddNewItemCard } from '../AddNewItemCard';
 import { SearchBar } from './SearchBar';

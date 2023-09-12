@@ -1,5 +1,5 @@
 'use client';
-import { ItemType, ModalMessages } from '@/utils/common';
+import { ItemType, ModalMessages } from '@/types/types';
 import { Modal } from 'antd';
 import { useRouter } from 'next/navigation';
 import Button from './UI/Button';

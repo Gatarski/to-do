@@ -1,5 +1,9 @@
 import database from '@/lib/database';
-import { EventData, MAX_100_CHARS, MAX_20_CHARS } from '@/utils/common';
+import { EventData } from '@/types/types';
+import {
+  MAX_100_CHARS,
+  MAX_20_CHARS,
+} from '@/constants/charactersLimits';
 import { DataTypes, Model } from 'sequelize';
 
 export interface ProjectDatabaseInterface extends EventData {

@@ -3,15 +3,19 @@ import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
-  FIELD_MAX_200_CHARS_VALIDATION_MESSAGE,
-  FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
-  FIELD_REQUIRED_VALIDATION_MESSAGE,
-  MAX_200_CHARS,
-  MAX_20_CHARS,
   ModalMessages,
   ModalType,
   NoteData,
-} from '@/utils/common';
+} from '@/types/types';
+import {
+  FIELD_MAX_200_CHARS_VALIDATION_MESSAGE,
+  FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
+  FIELD_REQUIRED_VALIDATION_MESSAGE,
+} from '@/constants/validationMessages';
+import {
+  MAX_200_CHARS,
+  MAX_20_CHARS,
+} from '@/constants/charactersLimits';
 import { TextArea } from '../UI/TextArea';
 import * as Yup from 'yup';
 import { createNoteAPI, editNoteAPI } from '@/lib/apiClient';

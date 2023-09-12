@@ -3,11 +3,15 @@ import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
+  TaskData,
+} from '@/types/types';
+import {
   FIELD_MAX_70_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
+} from '@/constants/validationMessages';
+import {
   MAX_70_CHARS,
-  TaskData,
-} from '@/utils/common';
+} from '@/constants/charactersLimits';
 import { TextArea } from '../UI/TextArea';
 import { Tabs } from '../UI/Tabs';
 import * as Yup from 'yup';

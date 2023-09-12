@@ -1,14 +1,18 @@
 'use client';
 import { FormikProvider, useFormik } from 'formik';
 import { Input } from './UI/Input';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Button from './UI/Button';
 import {
   AuthFormData,
+} from '@/types/types';
+import {
   FIELD_MAX_50_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
+} from '@/constants/validationMessages';
+import {
   MAX_50_CHARS,
-} from '@/utils/common';
+} from '@/constants/charactersLimits';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { loginUserAPI, registerUserAPI } from '@/lib/apiClient';

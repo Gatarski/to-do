@@ -2,7 +2,7 @@ import { Card } from '../UI/Card';
 import { ChipWithTitle } from '../UI/ChipWIthTitle';
 import { DeleteUserButton } from './DeleteUserButton';
 import { ProfileForm } from './ProfileForm';
-import { PreviewData, ProfileData } from '@/utils/common';
+import { PreviewData, ProfileData } from '@/types/types';
 
 interface ProfileProps {
   profileData: ProfileData;

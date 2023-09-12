@@ -1,4 +1,4 @@
-import { NoteData } from '@/utils/common';
+import { NoteData } from '@/types/types';
 import { Card } from '@/components/UI/Card';
 import { GuideBox } from '../UI/GuideBox';
 import Link from 'next/link';

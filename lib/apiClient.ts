@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios';
-import { AuthFormData, EventData, NoteData, ProfileData } from '@/utils/common';
+import { AuthFormData, EventData, NoteData, ProfileData } from '@/types/types';
 import { TasksDatabaseInterface } from '@/models/tasks';
 
 interface FetcherInterface {

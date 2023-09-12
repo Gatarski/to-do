@@ -1,5 +1,5 @@
 import { Card } from '../UI/Card';
-import { NoteData } from '@/utils/common';
+import { NoteData } from '@/types/types';
 import { AddNewItemCard } from '../AddNewItemCard';
 import Notes from '@/models/notes';
 import { getUserIdFromCookie } from '@/lib/auth';

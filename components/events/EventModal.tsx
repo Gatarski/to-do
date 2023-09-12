@@ -3,15 +3,19 @@ import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import {
-  FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
-  FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
-  FIELD_REQUIRED_VALIDATION_MESSAGE,
-  MAX_100_CHARS,
-  MAX_20_CHARS,
   EventData,
   ModalMessages,
   ModalType,
-} from '@/utils/common';
+} from '@/types/types';
+import {
+  FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
+  FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
+  FIELD_REQUIRED_VALIDATION_MESSAGE,
+} from '@/constants/validationMessages';
+import {
+  MAX_100_CHARS,
+  MAX_20_CHARS,
+} from '@/constants/charactersLimits';
 import { Input } from '../UI/Input';
 import { Tabs } from '../UI/Tabs';
 import { Datepicker } from '../UI/Datepicker';

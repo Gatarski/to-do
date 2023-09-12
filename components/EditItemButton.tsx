@@ -3,7 +3,7 @@ import { useModalVisibility } from '@/utils/client-utils';
 import EditIcon from '../assets/icons/EditIcon.svg';
 import Image from 'next/image';
 import { EventModal } from './events/EventModal';
-import { EventData, NoteData } from '@/utils/common';
+import { EventData, NoteData } from '@/types/types';
 import { NoteModal } from './notes/NoteModal';
 
 interface EditItemButtonProps {

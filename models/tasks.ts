@@ -1,5 +1,8 @@
 import database from '@/lib/database';
-import { MAX_70_CHARS, TaskData } from '@/utils/common';
+import { TaskData } from '@/types/types';
+import {
+  MAX_70_CHARS,
+} from '@/constants/charactersLimits';
 import { DataTypes, Model } from 'sequelize';
 
 export interface TasksDatabaseInterface extends TaskData {

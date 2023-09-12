@@ -1,8 +1,8 @@
 'use client';
+import '../../styles/taskCard.css';
 import { ChipWithTitle } from '../UI/ChipWIthTitle';
 import { Card } from '../UI/Card';
-import { TaskData } from '@/utils/common';
-import '../../styles/taskCard.css';
+import { TaskData } from '@/types/types';
 import { doneTaskAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import { DeleteItemButton } from '../DeleteItemButton';
@@ -30,7 +30,7 @@ export const TaskCard = ({ task, priority, isDone, id, isDisabled }: TaskData) =
           </div>
           <div>
             {isDone ? (
-              <div className="flex items-center font-bold text-[#7ac142]">
+              <div className="flex items-center font-bold text-lime-500">
                 <Checkmark />
                 done
               </div>

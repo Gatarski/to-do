@@ -2,7 +2,7 @@
 import { displayAddModal } from '@/utils/utils';
 import Button from './UI/Button';
 import { useModalVisibility } from '@/utils/client-utils';
-import { ItemType } from '@/utils/common';
+import { ItemType } from '@/types/types';
 
 interface AddNewItemButtonProps {
   buttonText: string;

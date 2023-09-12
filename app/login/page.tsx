@@ -10,7 +10,7 @@ export default async function LoginPage() {
   }
 
   return (
-    <Card className="w-1/3">
+    <Card className="w-[600px]">
       <AuthForm authMode={'login'} />
     </Card>
   );

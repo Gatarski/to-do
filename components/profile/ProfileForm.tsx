@@ -1,7 +1,13 @@
 'use client';
 import { FormikProvider, useFormik } from 'formik';
 import { Input } from '../UI/Input';
-import { FIELD_MAX_50_CHARS_VALIDATION_MESSAGE, MAX_50_CHARS, ProfileData } from '@/utils/common';
+import { ProfileData } from '@/types/types';
+import {
+  FIELD_MAX_50_CHARS_VALIDATION_MESSAGE,
+} from '@/constants/validationMessages';
+import {
+  MAX_50_CHARS,
+} from '@/constants/charactersLimits';
 import Button from '../UI/Button';
 import * as Yup from 'yup';
 import { editProfileAPI } from '@/lib/apiClient';
@@ -35,7 +41,7 @@ export const ProfileForm = ({ profileData }: { profileData: ProfileData }) => {
     <div className="flex flex-col text-center">
       <FormikProvider value={formik}>
         <h2 className="self-center text-2xl p-1">Edit your profile</h2>
-        <form onSubmit={formik.handleSubmit}>
+        <form className='min-w-[250px] ' onSubmit={formik.handleSubmit}>
           <Input labelText="Email" name="email" id="email" placeholder="Email" disabled={true} />
           <Input
             labelText="Display name (optional)"
