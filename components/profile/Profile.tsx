@@ -28,7 +28,7 @@ export const Profile = ({ profileData, previewData }: ProfileProps) => {
           <h2 className="text-2xl mb-3 p-1">Preview your data</h2>
         </div>
         <div className="flex flex-row items-start justify-center border-b border-solid gap-10 py-5">
-          <div className="w-1/4 flex flex-col justify-end gap-2">
+          <div className="flex flex-col justify-end gap-2">
             <label className="self-center text-xl font-bold">Events</label>
             <ChipWithTitle chipText={projectsTotalNumber} chipTitle="Total number of events:" />
             <ChipWithTitle

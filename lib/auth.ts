@@ -53,7 +53,7 @@ export const getUserFromCookie = async () => {
 
   const jwtPayload = jwt && (await verifyJWT(jwt.value));
 
-  if (jwtPayload.id) {
+  if (jwtPayload && jwtPayload.id) {
     const user = await Users.findOne({
       where: {
         id: jwtPayload.id,

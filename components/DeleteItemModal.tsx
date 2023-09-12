@@ -50,7 +50,7 @@ const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Elemen
         }}
       />
       <Button
-        className={'mr-2'}
+        className='mr-2'
         buttonText="Delete"
         isDisabled={false}
         type="primary"
@@ -99,11 +99,17 @@ const useRedirectAction = (itemType: ItemType) => {
       case 'event':
         router.replace('/home');
         router.refresh();
+        return;
       case 'task':
         router.refresh();
+        return;
       case 'note':
         router.replace('/notes');
         router.refresh();
+        return;
+      default:
+        router.refresh();
+        return;
     }
-  }, [itemType]);
+  }, [itemType, router]);
 };
