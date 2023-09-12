@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { DeleteItemButton } from '../DeleteItemButton';
 import { Tag } from '../UI/Tag';
 import { EditItemButton } from '../EditItemButton';
+import { NoData } from '@/utils/utils';
 
 interface NoteProps {
   note: NoteData | undefined;
@@ -19,6 +20,8 @@ export const Note = async ({ note }: NoteProps) => {
 
   return (
     <Card className={noteStyle}>
+      <>
+      {note ? (
       <div className="w-full">
         <div className="flex flex-col items-center border-b border-solid">
           <div className="w-full">
@@ -50,6 +53,10 @@ export const Note = async ({ note }: NoteProps) => {
           ></textarea>
         </div>
       </div>
+      ) : (
+            <NoData message='Note not found'/>
+          )}
+        </>
     </Card>
   );
 };

@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.34
+    networks:
+      dbnetwork:
+        # this IP address must equal with host in sequelize - that is why its specified because it can't be random
+        ipv4_address: 172.19.0.10 
+    ports:
+      - '3306:3306'
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD_LOCALHOST
+      MYSQL_DATABASE: $DB_NAME_LOCALHOST
+networks:
+  dbnetwork:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.19.0.0/16

@@ -1,16 +1,45 @@
-yarn install or npm install
+# to-do app
+This is fullstack app created in NextJS 13+
 
-npm run dev
+## Running on localhost
+This app is using `docker compose` to run MYSQL database and `yarn` to run application.
 
-npm run test
+1. Fetch app code
 
+2. Create file `.env` from `.env-example` and fill non empty values (you can leave PRODUCTION_DATABASE_MYSQL_URL empty). Look at secion `File. env` from README.md
 
-TO DO - HERE:
+3. Install dependencies `yarn install`
 
+4. Run database on docker container `docker-compose up -d` (remove -d if you want to see logs)
 
-INNE:
-- Wprowadzenie theme - https://tailwindcss.com/docs/theme
-- Zobaczyć czy można uderzyć postamen na endpointa - jeśli tak to zabezpieczyć aby JWT sę zgadzał
-- wywalić axios i użyć fetch który jest wbudowany w next 
-- dodać loadery gdy np.: ładuje dane z API
-- dodac readme
+5. Run application `yarn dev`
+
+6. Enojoy at `localhost:3000`
+
+If you want to stop your container with database use command `docker compose down`
+
+## Running outside localhost (eg.: production)
+Application in NextJS is designed to work on Vercel. Example steps to configure production:
+- create MySQL database on railway
+- create new project in Vercel
+- correctly fill file `.env` for production and use is as environment inside Vercel project.
+
+## File .env
+How fill .env:
+
+- `DEV_ENV`- when set to `on` it is configured to work on localhost. Other value will run on production mode.
+- `PRODUCTION_DATABASE_MYSQL_URL` - leave empty for localhost. For production paste here railway MySQL URL address.
+- `JWT_SECRET` - must be filled, it can be random string eg.: `jwt_very_secret_token_abc`
+- `COOKIE_NAME` - must be filled, it can be random string eg.: `__todo_app__`
+- `DB_NAME_LOCALHOST` - need for localhost. Leave as it is in `.env-example`
+- `DB_USER_LOCALHOST` - need for localhost. Leave as it is in `.env-example`
+- `DB_PASSWORD_LOCALHOST` - need for localhost, type you password (can be random string)
+
+## Tests
+
+### Unit tests
+Unit tests are in folder `/tests`, test are created with Jest and react testing library .
+To run use `yarn test`
+
+### e2e tests
+TBA (will be created in Cypress)

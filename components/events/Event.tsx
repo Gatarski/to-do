@@ -108,16 +108,12 @@ export const Event = async ({ event }: EventProps) => {
               </div>
             </div>
           ) : (
-            <EventNotFound />
+            <NoData message='Event not found'/>
           )}
         </>
       </Card>
     </>
   );
-};
-
-const EventNotFound = (): JSX.Element => {
-  return <div className="text-3xl font-bold">Event not found</div>;
 };
 
 const countCompletedTasks = (tasks: TaskData[]): string => {
@@ -164,7 +160,7 @@ const changeProjectStatus = async (
 ) => {
   const areAllTasksDone = tasks.every(task => task.isDone) && tasks.length;
 
-  if (!isEventClosed) {
+  if (!isEventClosed && projectId) {
     await Projects.update(
       { status: areAllTasksDone ? 'tasks done' : 'pending' },
       {
