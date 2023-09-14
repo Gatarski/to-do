@@ -1,5 +1,4 @@
 'use client';
-import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import { EventData, ModalMessages, ModalType } from '@/types/types';
@@ -16,6 +15,7 @@ import * as Yup from 'yup';
 import { createProjectAPI, editProjectAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import dayjs from 'dayjs';
+import { Modal } from '../Modal';
 
 interface EventModalProps {
   modalOpen: boolean;
@@ -84,19 +84,13 @@ export const EventModal = ({ modalOpen, closeModal, mode, eventData }: EventModa
   const { title, subtitle } = getModalMessages(mode);
 
   return (
-    <Modal
-      width={'600px'}
-      className={'landscape:top-2'}
-      closable={false}
-      open={modalOpen}
-      footer={<></>}
-    >
+    <Modal open={modalOpen}>
       <>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid landscape:pb-2.5">
+            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid mobile:pb-2.5">
               <header className="text-base font-semibold">{title}</header>
-              <p className="text-sx font-normal landscape:hidden">{subtitle}</p>
+              <p className="text-sx font-normal mobile:hidden">{subtitle}</p>
             </div>
             <div>
               {EVENT_SCHEMA.map((event, index) => {
@@ -135,7 +129,7 @@ export const EventModal = ({ modalOpen, closeModal, mode, eventData }: EventModa
                 }
               })}
             </div>
-            <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6 landscape:pt-2.5">
+            <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6 mobile:pt-2.5">
               <Button
                 buttonText="Cancel"
                 isDisabled={false}

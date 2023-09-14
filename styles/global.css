@@ -39,7 +39,7 @@
   padding-left: 0 !important;
   padding-right: 0 !important;
 
-  @media (orientation: landscape) {
+  @media (max-height: 639px) and (max-width: 639px) {
     padding: 0.625rem !important;
   }
 }

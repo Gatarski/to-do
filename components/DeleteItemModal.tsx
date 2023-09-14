@@ -1,10 +1,10 @@
 'use client';
 import { ItemType, ModalMessages } from '@/types/types';
-import { Modal } from 'antd';
 import { useRouter } from 'next/navigation';
 import Button from './UI/Button';
 import { deleteNoteAPI, deleteProjectAPI, deleteTaskAPI } from '@/lib/apiClient';
 import { useCallback } from 'react';
+import { Modal } from './Modal';
 
 interface DeleteItemModalProps {
   modalOpen: boolean;
@@ -18,8 +18,6 @@ export const DeleteItemModal = ({ modalOpen, closeModal, itemType, id }: DeleteI
 
   return (
     <Modal
-      width={'600px'}
-      closable={false}
       open={modalOpen}
       footer={<ModalFooter closeModal={closeModal} itemType={itemType} id={id} />}
     >
@@ -50,7 +48,7 @@ const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Elemen
         }}
       />
       <Button
-        className='mr-2'
+        className="mr-2"
         buttonText="Delete"
         isDisabled={false}
         type="primary"

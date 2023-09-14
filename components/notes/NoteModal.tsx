@@ -1,5 +1,4 @@
 'use client';
-import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import { ModalMessages, ModalType, NoteData } from '@/types/types';
@@ -15,6 +14,7 @@ import { createNoteAPI, editNoteAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import { Input } from '../UI/Input';
 import { Switch } from '../UI/Switch';
+import { Modal } from '../Modal';
 
 interface NoteModalProps {
   modalOpen: boolean;
@@ -49,17 +49,11 @@ export const NoteModal = ({ modalOpen, closeModal, mode, noteData }: NoteModalPr
   });
 
   return (
-    <Modal
-      width={'600px'}
-      className={'landscape:top-2'}
-      closable={false}
-      open={modalOpen}
-      footer={<></>}
-    >
+    <Modal open={modalOpen}>
       <>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid landscape:pb-2.5">
+            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid mobile:pb-2.5">
               <header className="text-base font-semibold">{title}</header>
               <p className="text-sx font-normal">{subtitle}</p>
             </div>

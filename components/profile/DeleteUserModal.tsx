@@ -1,10 +1,11 @@
 'use client';
-import { Checkbox, Modal } from 'antd';
+import { Checkbox } from 'antd';
 import Button from '../UI/Button';
 import { useState } from 'react';
 import { CheckboxChangeEvent } from 'antd/es/checkbox';
 import { useRouter } from 'next/navigation';
 import { deleteUserAPI } from '@/lib/apiClient';
+import { Modal } from '../Modal';
 
 interface DeleteUserModalProps {
   modalOpen: boolean;
@@ -18,8 +19,6 @@ export const DeleteUserModal = ({ modalOpen, closeModal }: DeleteUserModalProps)
     <>
       {modalOpen && (
         <Modal
-          width={'600px'}
-          closable={false}
           open={modalOpen}
           footer={
             <ModalFooter
@@ -31,12 +30,12 @@ export const DeleteUserModal = ({ modalOpen, closeModal }: DeleteUserModalProps)
         >
           <div className="flex flex-col gap-2 border-b border-solid">
             <div className='border-b border-solid"'>
-              <header className="pl-5 pb-5 text-base font-semibold">Delete user</header>
+              <header className="px-5 pb-5 text-base font-semibold">Delete user</header>
             </div>
             <p className="pl-5 pt-2 text-sx font-normal">
               Are you sure you want to delete user? You will lose all your data.
             </p>
-            <div className="flex pl-5 pt-2 pb-4 gap-2 font-bold">
+            <div className="flex px-5 pt-2 pb-4 gap-2 font-bold">
               <Checkbox
                 onChange={(event: CheckboxChangeEvent) => {
                   setIsConfirmed(event.target.checked);

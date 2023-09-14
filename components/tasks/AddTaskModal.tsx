@@ -1,5 +1,4 @@
 'use client';
-import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
 import { TaskData } from '@/types/types';
@@ -13,6 +12,7 @@ import { Tabs } from '../UI/Tabs';
 import * as Yup from 'yup';
 import { createTaskAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
+import { Modal } from '../Modal';
 
 interface AddTaskModalProps {
   modalOpen: boolean;
@@ -42,17 +42,11 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
   });
 
   return (
-    <Modal
-      width={'600px'}
-      className={'landscape:top-2'}
-      closable={false}
-      open={modalOpen}
-      footer={<></>}
-    >
+    <Modal open={modalOpen}>
       <>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid landscape:pb-2.5">
+            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid mobile:pb-2.5">
               <header className="text-base font-semibold">Add new task</header>
               <p className="text-sx font-normal">Complete below form to add new task</p>
             </div>
