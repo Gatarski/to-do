@@ -13,7 +13,7 @@ export const Switch: FC<SwitchProps> = ({ labelText, name, ...rest }) => {
   const [field, meta, { setValue }] = useField({ name, ...rest });
 
   return (
-    <div className="flex flex-col m-3 p-2 text-left">
+    <div className="flex flex-col m-3 p-2 text-left mobile:m-1 mobile:p-1">
       <label className="text-xs pb-1">{labelText}</label>
       <AntdSwitch
         className="w-12 bg-slate-400"

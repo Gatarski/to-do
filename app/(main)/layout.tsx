@@ -8,7 +8,9 @@ export default async function MainLayout({ children }: { children: React.ReactNo
       <LeftSidebar />
       <div className="w-full h-full flex flex-col">
         <TopPanel />
-        <div className="w-[95%] h-[85%] m-6">{children}</div>
+        <div className="h-[calc(100%-75px)] m-6 mobile:m-0">
+          {children}
+        </div>
       </div>
     </>
   );

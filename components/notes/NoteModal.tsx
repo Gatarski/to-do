@@ -2,20 +2,13 @@
 import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
-import {
-  ModalMessages,
-  ModalType,
-  NoteData,
-} from '@/types/types';
+import { ModalMessages, ModalType, NoteData } from '@/types/types';
 import {
   FIELD_MAX_200_CHARS_VALIDATION_MESSAGE,
   FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
 } from '@/constants/validationMessages';
-import {
-  MAX_200_CHARS,
-  MAX_20_CHARS,
-} from '@/constants/charactersLimits';
+import { MAX_200_CHARS, MAX_20_CHARS } from '@/constants/charactersLimits';
 import { TextArea } from '../UI/TextArea';
 import * as Yup from 'yup';
 import { createNoteAPI, editNoteAPI } from '@/lib/apiClient';
@@ -56,11 +49,17 @@ export const NoteModal = ({ modalOpen, closeModal, mode, noteData }: NoteModalPr
   });
 
   return (
-    <Modal width={'600px'} closable={false} open={modalOpen} footer={<></>}>
+    <Modal
+      width={'600px'}
+      className={'landscape:top-2'}
+      closable={false}
+      open={modalOpen}
+      footer={<></>}
+    >
       <>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid">
+            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid landscape:pb-2.5">
               <header className="text-base font-semibold">{title}</header>
               <p className="text-sx font-normal">{subtitle}</p>
             </div>

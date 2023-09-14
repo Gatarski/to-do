@@ -66,7 +66,7 @@ const useOnClick = (isDisabled: boolean | undefined, id: string | undefined) => 
 };
 
 const getStyleForTaskCard = (isDisabled: boolean | undefined): string => {
-  const commonStyle = 'm-4 w-64 h-32';
+  const commonStyle = 'm-4 w-64 h-32 portrait:w-56';
 
   switch (isDisabled) {
     case true:

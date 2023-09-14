@@ -2,20 +2,13 @@
 import { Modal } from 'antd';
 import Button from '../UI/Button';
 import { FormikProvider, useFormik } from 'formik';
-import {
-  EventData,
-  ModalMessages,
-  ModalType,
-} from '@/types/types';
+import { EventData, ModalMessages, ModalType } from '@/types/types';
 import {
   FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
   FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
 } from '@/constants/validationMessages';
-import {
-  MAX_100_CHARS,
-  MAX_20_CHARS,
-} from '@/constants/charactersLimits';
+import { MAX_100_CHARS, MAX_20_CHARS } from '@/constants/charactersLimits';
 import { Input } from '../UI/Input';
 import { Tabs } from '../UI/Tabs';
 import { Datepicker } from '../UI/Datepicker';
@@ -91,13 +84,19 @@ export const EventModal = ({ modalOpen, closeModal, mode, eventData }: EventModa
   const { title, subtitle } = getModalMessages(mode);
 
   return (
-    <Modal width={'600px'} closable={false} open={modalOpen} footer={<></>}>
+    <Modal
+      width={'600px'}
+      className={'landscape:top-2'}
+      closable={false}
+      open={modalOpen}
+      footer={<></>}
+    >
       <>
         <FormikProvider value={formik}>
           <form onSubmit={formik.handleSubmit}>
-            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid">
+            <div className="flex flex-col pl-5 pb-5 gap-2 border-b border-solid landscape:pb-2.5">
               <header className="text-base font-semibold">{title}</header>
-              <p className="text-sx font-normal">{subtitle}</p>
+              <p className="text-sx font-normal landscape:hidden">{subtitle}</p>
             </div>
             <div>
               {EVENT_SCHEMA.map((event, index) => {
@@ -136,7 +135,7 @@ export const EventModal = ({ modalOpen, closeModal, mode, eventData }: EventModa
                 }
               })}
             </div>
-            <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6">
+            <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6 landscape:pt-2.5">
               <Button
                 buttonText="Cancel"
                 isDisabled={false}

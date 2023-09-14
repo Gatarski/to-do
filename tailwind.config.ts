@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -7,8 +7,11 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-
+    screens: {
+      mobile: { raw: '(max-height: 639px),(max-width: 639px)' },
+      // this is used when app is on mobile phone on horizontal or vertical view
+    },
   },
   plugins: [],
-}
-export default config
+};
+export default config;

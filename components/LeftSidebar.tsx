@@ -17,7 +17,7 @@ const links: LinkInterface[] = [
 
 export const LeftSidebar = () => {
   return (
-    <Card className="rounded-s-2xl h-full w-40 flex items-center justify-between flex-wrap">
+    <Card className="h-full w-40 flex items-center justify-between flex-wrap mobile:p-2 mobile:w-20">
       <>
         {links.map(({ link, icon, label }, index) => (
           <SidebarLink key={index} link={link} icon={icon} label={label} />

@@ -19,7 +19,9 @@ export const Events = async ({ event }: EventsProps) => {
   const filteredEvents = filterEvents(event, sortedEvents);
 
   const areEvents = !!filteredEvents.length;
-  const eventsStyle = areEvents ? 'flex flex-wrap' : 'h-[60%] flex items-center justify-center';
+  const eventsStyle = areEvents
+    ? 'flex flex-wrap'
+    : 'h-[60%] flex items-center justify-center mobile:h-auto';
   return (
     <>
       <Card className="w-full h-full bg-white border border-gray overflow-y-auto">

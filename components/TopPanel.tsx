@@ -11,11 +11,13 @@ export const TopPanel = async () => {
   const currentDate = getCurrentDate();
 
   return (
-    <div className="min-h-[75px] rounded-tr-2xl border border-gray h-20 bg-white flex items-center justify-between">
-      <div className="pl-6 text-xl flex">
-        You are logged as&nbsp;<div className="font-bold">{userNameToDisplay}</div>&nbsp;- today
-        is&nbsp;
-        <div className="font-bold">{currentDate}</div>
+    <div className="min-h-[75px] border border-gray h-20 bg-white flex items-center justify-between">
+      <div className="pl-6 text-xl flex portrait:text-base">
+        You are logged as&nbsp;<div className="font-bold">{userNameToDisplay}</div>
+        <div className="flex portrait:hidden">
+          &nbsp;- today is&nbsp;
+          <div className="font-bold">{currentDate}</div>
+        </div>
       </div>
       <div className="pr-6">
         <Logout />

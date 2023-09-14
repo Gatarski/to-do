@@ -14,7 +14,7 @@ export const Tabs: FC<TabsProps> = ({ labelText, name, options, ...rest }) => {
   const [field, meta] = useField({ name, ...rest });
 
   return (
-    <div className="flex flex-col m-3 p-2 text-left">
+    <div className="flex flex-col m-3 p-2 text-left mobile:m-1 mobile:p-1">
       <label className="text-xs pb-1">{labelText}</label>
       <Radio.Group {...rest} {...field}>
         {options?.map((option, index) => {

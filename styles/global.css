@@ -38,6 +38,10 @@
   border-radius: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
+
+  @media (orientation: landscape) {
+    padding: 0.625rem !important;
+  }
 }
 
 /* global scrollbar styling */

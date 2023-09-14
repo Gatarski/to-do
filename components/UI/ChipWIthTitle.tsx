@@ -6,9 +6,18 @@ const Chip = ({ chipText }: { chipText: string | number }): JSX.Element => {
   );
 };
 
-export const ChipWithTitle = ({ chipText, chipTitle }: { chipText: string | number, chipTitle: string }): JSX.Element => {
+export const ChipWithTitle = ({
+  chipText,
+  chipTitle,
+  className,
+}: {
+  chipText: string | number;
+  chipTitle: string;
+  className?: string;
+}): JSX.Element => {
+  const chipStyle = `flex justify-between ${className}`;
   return (
-    <div className="flex justify-between">
+    <div className={chipStyle}>
       <div className="mr-2 mt-2 font-bold">{chipTitle}</div>
       <Chip chipText={chipText} />
     </div>

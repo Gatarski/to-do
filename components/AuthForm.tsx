@@ -82,14 +82,9 @@ const PASSWORD_VALIDATION_MESSAGE = 'Password should contain at least 6 characte
 const EMAIL_VALIDATION_MESSAGE = 'Invalid email';
 
 export const AuthForm = ({ authMode }: AuthFormProps) => {
-  // const [isClient, setIsClient] = useState(false);
   const [apiError, setApiError] = useState('');
   const [isApiLoading, setIsApiLoading] = useState(false);
   const router = useRouter();
-
-  // useEffect(() => {
-  //   setIsClient(true);
-  // }, []);
 
   const initialValues = getInitialValues(authMode);
   const formSchema = getFormSchema(authMode);
@@ -115,7 +110,7 @@ export const AuthForm = ({ authMode }: AuthFormProps) => {
       <FormikProvider value={formik}>
         <div className="text-center">
           <h2 className="text-3xl mb-2">{header}</h2>
-          <p className="text-lg text-black/25">{subheader}</p>
+          <p className="text-lg text-black/25 mobile:hidden">{subheader}</p>
         </div>
         <div className={`${isApiLoading && 'text-center p-3'}`}>
           {!isApiLoading ? (

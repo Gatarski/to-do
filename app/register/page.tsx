@@ -10,7 +10,7 @@ export default async function RegisterPage() {
   }
 
   return (
-    <Card className="w-[600px]">
+    <Card className="w-[600px] portrait:w-[350px]">
       <AuthForm authMode={'register'} />
     </Card>
   );

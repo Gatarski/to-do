@@ -16,7 +16,7 @@ export const Datepicker: FC<DatepickerProps> = ({ labelText, placeholder, name, 
   const [field, meta, { setValue }] = useField({ name, ...rest });
 
   return (
-    <div className="flex flex-col m-3 p-2 text-left">
+    <div className="flex flex-col m-3 p-2 text-left mobile:m-1 mobile:p-1">
       <label className={`text-xs ${meta.error && 'text-red-600'}`}>{labelText}</label>
       <DatePicker
         className={`pl-1 leading-normal rounded-none h-10 ${

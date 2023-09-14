@@ -23,7 +23,7 @@ export const SidebarLink = ({ link, icon, label }: LinkInterface) => {
 };
 
 const getIcon = (iconName: IconType, isLinkActive: boolean, label: string) => {
-  const ICON_STYLE = `text-center ${
+  const ICON_STYLE = `flex flex-col items-center mobile:w-10 ${
     isLinkActive && 'font-medium'
   } transition-transform hover:scale-105`;
 
@@ -36,7 +36,7 @@ const getIcon = (iconName: IconType, isLinkActive: boolean, label: string) => {
           ) : (
             <Image src={EventsIcon} alt="Events icon" />
           )}
-          {label}
+          <label>{label}</label>
         </div>
       );
     case 'Profile':
@@ -47,7 +47,7 @@ const getIcon = (iconName: IconType, isLinkActive: boolean, label: string) => {
           ) : (
             <Image src={ProfileIcon} alt="Profile icon" />
           )}
-          {label}
+          <label>{label}</label>
         </div>
       );
     case 'Notes':
@@ -58,7 +58,7 @@ const getIcon = (iconName: IconType, isLinkActive: boolean, label: string) => {
           ) : (
             <Image src={NotesIcon} alt="Notes icon" />
           )}
-          {label}
+          <label>{label}</label>
         </div>
       );
     default:

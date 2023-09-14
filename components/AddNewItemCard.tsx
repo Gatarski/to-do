@@ -49,7 +49,7 @@ const useOnClick = (isDisabled: boolean | undefined, openModal: Function) => {
 
 const getStyleForAddItemCard = (isDisabled: boolean | undefined, itemType: ItemType): string => {
   const commonStyle = `${
-    itemType === 'event' ? 'w-48 h-48' : 'w-64 h-32'
+    itemType === 'event' ? 'w-48 h-48' : 'w-64 h-32 portrait:w-56'
   } m-4 flex flex-col justify-center items-center border border-dashed border-blue-600`;
 
   switch (isDisabled) {

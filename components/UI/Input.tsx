@@ -26,7 +26,7 @@ export const Input: FC<InputProps> = ({ labelText, placeholder, name, type, ...r
 
   const isError = !isFocus && meta.error;
   return (
-    <div className="m-3 p-2 text-left">
+    <div className="m-3 p-2 text-left mobile:m-1 mobile:p-1">
       <label className={`text-xs ${isError && 'text-red-600'}`}>{labelText}</label>
       <InputAnt
         className={`pl-1 leading-normal rounded-none h-10 ${

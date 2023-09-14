@@ -39,8 +39,8 @@ export const Event = async ({ event }: EventProps) => {
             <div className="w-full">
               <div className="flex flex-col items-center border-b border-solid">
                 <div className="w-full">
-                  <div className="flex justify-between">
-                    <div className="flex flex-col justify-between">
+                  <div className="flex justify-between portrait:flex-col-reverse">
+                    <div className="flex flex-col justify-between portrait:gap-3">
                       <Link href="/home">
                         <div className="underline font-bold">Go back to events</div>
                       </Link>
@@ -50,16 +50,18 @@ export const Event = async ({ event }: EventProps) => {
                         <EditItemButton itemType="event" data={event} />
                       </div>
                     </div>
-                    <div className="flex flex-col items-center">
+                    <div className="flex flex-col items-center portrait:justify-center portrait:pl-3">
                       <h1 className="text-3xl my-2 font-bold">{event.title}</h1>
-                      <h2 className="text-2xl mb-2 p-1">{event.shortDescription}</h2>
+                      <h2 className="text-2xl mb-2 p-1 portrait:hidden">
+                        {event.shortDescription}
+                      </h2>
                     </div>
                     <div className="flex">
-                      <div className="flex flex-col">
+                      <div className="flex flex-col portrait:hidden">
                         <ChipWithTitle chipText={event.priority} chipTitle="Priority:" />
                         <ChipWithTitle chipText={event.deadline as string} chipTitle="Deadline:" />
                       </div>
-                      <div className="p-2 m-2 mb-6 flex items-center font-bold">
+                      <div className="p-2 m-2 mb-6 flex items-center font-bold mobile:hidden">
                         <div>{daysLeft} days left</div>
                       </div>
                     </div>
@@ -67,7 +69,7 @@ export const Event = async ({ event }: EventProps) => {
                 </div>
                 <div className="w-full flex items-center">
                   <GuideBox guideText="You can organize your event. To create tasks in event use button or card 'Add New Task'. Click on task to complete it." />
-                  <div className="ml-2">
+                  <div className="ml-2 portrait:hidden">
                     <ChipWithTitle chipText={countCompletedTasks(tasks)} chipTitle="Completed:" />
                   </div>
                 </div>
@@ -108,7 +110,7 @@ export const Event = async ({ event }: EventProps) => {
               </div>
             </div>
           ) : (
-            <NoData message='Event not found'/>
+            <NoData message="Event not found" />
           )}
         </>
       </Card>
