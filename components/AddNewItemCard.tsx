@@ -5,6 +5,11 @@ import { ItemType } from '@/types/types';
 import { displayAddModal } from '@/utils/utils';
 import { useModalVisibility } from '@/utils/client-utils';
 import { useCallback } from 'react';
+import {
+  EVENT_CARD_SIZE_STYLE,
+  NOTE_CARD_SIZE_STYLE,
+  TASK_CARD_SIZE_STYLE,
+} from '@/constants/sizes';
 
 interface AddNewItemCardProps {
   buttonText: string;
@@ -48,15 +53,28 @@ const useOnClick = (isDisabled: boolean | undefined, openModal: Function) => {
 };
 
 const getStyleForAddItemCard = (isDisabled: boolean | undefined, itemType: ItemType): string => {
-  const commonStyle = `${
-    itemType === 'event' ? 'w-48 h-48' : 'w-64 h-32 portrait:w-56'
-  } m-4 flex flex-col justify-center items-center border border-dashed border-blue-600`;
+  const cardStyle = getCardStyle(itemType);
 
   switch (isDisabled) {
     case true:
-      return `${commonStyle} cursor-not-allowed px-2 py-0 bg-slate-100`;
+      return `${cardStyle} cursor-not-allowed px-2 py-0 bg-slate-100`;
     case false:
-      return `${commonStyle} cursor-pointer transition-transform hover:scale-105 px-2 py-0 hover:bg-gray-200`;
+      return `${cardStyle} cursor-pointer transition-transform hover:scale-105 px-2 py-0 hover:bg-gray-200`;
+    default:
+      return cardStyle;
+  }
+};
+
+const getCardStyle = (itemType: ItemType) => {
+  const commonStyle =
+    'm-4 flex flex-col justify-center items-center border border-dashed border-blue-600';
+  switch (itemType) {
+    case 'event':
+      return `${EVENT_CARD_SIZE_STYLE} ${commonStyle}`;
+    case 'task':
+      return `${TASK_CARD_SIZE_STYLE} ${commonStyle}`;
+    case 'note':
+      return `${NOTE_CARD_SIZE_STYLE} ${commonStyle}`;
     default:
       return commonStyle;
   }

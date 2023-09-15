@@ -1,8 +1,9 @@
 import database from '@/lib/database';
 import { AuthFormData } from '@/types/types';
 import {
+  MAX_20_CHARS,
   MAX_50_CHARS,
-} from '@/constants/charactersLimits';
+} from '@/constants/sizes';
 import { DataTypes, Model } from 'sequelize';
 
 export interface UserDatabaseInterface extends AuthFormData {
@@ -26,7 +27,7 @@ const Users = database.db.define<UserModelInterface>('Users', {
     allowNull: false,
   },
   name: {
-    type: DataTypes.STRING(MAX_50_CHARS),
+    type: DataTypes.STRING(MAX_20_CHARS),
     allowNull: true,
   },
 });

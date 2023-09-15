@@ -6,8 +6,8 @@ import {
   FIELD_MAX_100_CHARS_VALIDATION_MESSAGE,
   FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
-} from '@/constants/validationMessages';
-import { MAX_100_CHARS, MAX_20_CHARS } from '@/constants/charactersLimits';
+} from '@/constants/messages';
+import { MAX_100_CHARS, MAX_20_CHARS } from '@/constants/sizes';
 import { Input } from '../UI/Input';
 import { Tabs } from '../UI/Tabs';
 import { Datepicker } from '../UI/Datepicker';

@@ -1,10 +1,13 @@
 import { Tag } from '../UI/Tag';
 import { Card } from '../UI/Card';
 import { EventData } from '@/types/types';
+import { EVENT_CARD_SIZE_STYLE } from '@/constants/sizes';
 
 export const EventCard = ({ title, shortDescription, deadline, status }: EventData) => {
+  const cardStyle = `${EVENT_CARD_SIZE_STYLE} m-4 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center`;
+
   return (
-    <Card className="m-4 w-48 h-48 min-w-48 min-h-48 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-center">
+    <Card className={cardStyle}>
       <>
         <h1 className="font-bold">{title}</h1>
         <p className="text-sm py-1">{shortDescription}</p>

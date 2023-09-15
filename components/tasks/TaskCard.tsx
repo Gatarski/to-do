@@ -7,6 +7,7 @@ import { doneTaskAPI } from '@/lib/apiClient';
 import { useRouter } from 'next/navigation';
 import { DeleteItemButton } from '../DeleteItemButton';
 import { useCallback } from 'react';
+import { TASK_CARD_SIZE_STYLE } from '@/constants/sizes';
 
 export const TaskCard = ({ task, priority, isDone, id, isDisabled }: TaskData) => {
   const cardStyle = getStyleForTaskCard(isDisabled);
@@ -66,14 +67,12 @@ const useOnClick = (isDisabled: boolean | undefined, id: string | undefined) => 
 };
 
 const getStyleForTaskCard = (isDisabled: boolean | undefined): string => {
-  const commonStyle = 'm-4 w-64 h-32 portrait:w-56';
-
   switch (isDisabled) {
     case true:
-      return `${commonStyle} cursor-not-allowed flex flex-col justify-between px-2 py-0 bg-slate-100`;
+      return `${TASK_CARD_SIZE_STYLE} m-4 cursor-not-allowed flex flex-col justify-between px-2 py-0 bg-slate-100`;
     case false:
-      return `${commonStyle} cursor-pointer transition-transform hover:scale-105 flex flex-col justify-between px-2 py-0`;
+      return `${TASK_CARD_SIZE_STYLE} m-4 cursor-pointer transition-transform hover:scale-105 flex flex-col justify-between px-2 py-0`;
     default:
-      return commonStyle;
+      return TASK_CARD_SIZE_STYLE;
   }
 };

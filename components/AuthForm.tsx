@@ -3,16 +3,13 @@ import { FormikProvider, useFormik } from 'formik';
 import { Input } from './UI/Input';
 import { useState } from 'react';
 import Button from './UI/Button';
+import { AuthFormData } from '@/types/types';
 import {
-  AuthFormData,
-} from '@/types/types';
-import {
+  FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
   FIELD_MAX_50_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
-} from '@/constants/validationMessages';
-import {
-  MAX_50_CHARS,
-} from '@/constants/charactersLimits';
+} from '@/constants/messages';
+import { MAX_20_CHARS, MAX_50_CHARS } from '@/constants/sizes';
 import Link from 'next/link';
 import * as Yup from 'yup';
 import { loginUserAPI, registerUserAPI } from '@/lib/apiClient';
@@ -193,7 +190,7 @@ const validationSchema = Yup.object().shape({
     .required(FIELD_REQUIRED_VALIDATION_MESSAGE)
     .max(MAX_50_CHARS, FIELD_MAX_50_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Password')),
   name: Yup.string().max(
-    MAX_50_CHARS,
-    FIELD_MAX_50_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Name'),
+    MAX_20_CHARS,
+    FIELD_MAX_20_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Name'),
   ),
 });

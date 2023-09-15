@@ -6,8 +6,8 @@ import {
   FIELD_MAX_200_CHARS_VALIDATION_MESSAGE,
   FIELD_MAX_20_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
-} from '@/constants/validationMessages';
-import { MAX_200_CHARS, MAX_20_CHARS } from '@/constants/charactersLimits';
+} from '@/constants/messages';
+import { MAX_200_CHARS, MAX_20_CHARS } from '@/constants/sizes';
 import { TextArea } from '../UI/TextArea';
 import * as Yup from 'yup';
 import { createNoteAPI, editNoteAPI } from '@/lib/apiClient';

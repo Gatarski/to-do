@@ -5,8 +5,8 @@ import { TaskData } from '@/types/types';
 import {
   FIELD_MAX_70_CHARS_VALIDATION_MESSAGE,
   FIELD_REQUIRED_VALIDATION_MESSAGE,
-} from '@/constants/validationMessages';
-import { MAX_70_CHARS } from '@/constants/charactersLimits';
+} from '@/constants/messages';
+import { MAX_70_CHARS } from '@/constants/sizes';
 import { TextArea } from '../UI/TextArea';
 import { Tabs } from '../UI/Tabs';
 import * as Yup from 'yup';

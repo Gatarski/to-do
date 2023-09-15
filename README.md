@@ -14,9 +14,11 @@ This app is using `docker compose` to run MYSQL database and `yarn` to run appli
 
 5. Run application `yarn dev`
 
+TIP: You can use combined command from step 4 and 5: `docker-compose up -d && yarn dev`
+
 6. Enojoy at `localhost:3000`
 
-If you want to stop your container with database use command `docker compose down`
+If you want to stop your container with database use command `docker compose down` - it will remove container with all its data inside.
 
 ## Running outside localhost (eg.: production)
 Application in NextJS is designed to work on Vercel. Example steps to configure production:

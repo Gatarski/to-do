@@ -19,7 +19,11 @@ export const WelcomePage = async () => {
           Create simple well organized event with tasks to not miss anything
         </p>
         <div className="flex justify-center m-5">
-          <Image className={'w-[200px] h-[200px]'} src={ToDoListImage} alt="To do list" />
+          <Image
+            className={'w-[200px] h-[200px] mobile:w-[125px] mobile:h-[125px]'}
+            src={ToDoListImage}
+            alt="To do list"
+          />
         </div>
       </div>
       <div className="flex items-center justify-center">

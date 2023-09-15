@@ -10,7 +10,7 @@ export default async function Home() {
   await syncWithDataBase();
 
   return (
-    <Card>
+    <Card className="portrait:w-[350px]">
       <WelcomePage />
     </Card>
   );

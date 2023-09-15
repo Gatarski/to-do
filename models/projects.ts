@@ -3,7 +3,7 @@ import { EventData } from '@/types/types';
 import {
   MAX_100_CHARS,
   MAX_20_CHARS,
-} from '@/constants/charactersLimits';
+} from '@/constants/sizes';
 import { DataTypes, Model } from 'sequelize';
 
 export interface ProjectDatabaseInterface extends EventData {

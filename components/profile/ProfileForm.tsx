@@ -2,12 +2,8 @@
 import { FormikProvider, useFormik } from 'formik';
 import { Input } from '../UI/Input';
 import { ProfileData } from '@/types/types';
-import {
-  FIELD_MAX_50_CHARS_VALIDATION_MESSAGE,
-} from '@/constants/validationMessages';
-import {
-  MAX_50_CHARS,
-} from '@/constants/charactersLimits';
+import { FIELD_MAX_20_CHARS_VALIDATION_MESSAGE } from '@/constants/messages';
+import { MAX_20_CHARS } from '@/constants/sizes';
 import Button from '../UI/Button';
 import * as Yup from 'yup';
 import { editProfileAPI } from '@/lib/apiClient';
@@ -41,7 +37,7 @@ export const ProfileForm = ({ profileData }: { profileData: ProfileData }) => {
     <div className="flex flex-col text-center">
       <FormikProvider value={formik}>
         <h2 className="self-center text-2xl p-1">Edit your profile</h2>
-        <form className='min-w-[250px] ' onSubmit={formik.handleSubmit}>
+        <form className="min-w-[250px] " onSubmit={formik.handleSubmit}>
           <Input labelText="Email" name="email" id="email" placeholder="Email" disabled={true} />
           <Input
             labelText="Display name (optional)"
@@ -58,7 +54,7 @@ export const ProfileForm = ({ profileData }: { profileData: ProfileData }) => {
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().max(
-    MAX_50_CHARS,
-    FIELD_MAX_50_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Name'),
+    MAX_20_CHARS,
+    FIELD_MAX_20_CHARS_VALIDATION_MESSAGE.replace('[fieldName]', 'Name'),
   ),
 });

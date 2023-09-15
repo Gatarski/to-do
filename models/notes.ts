@@ -3,7 +3,7 @@ import { NoteData } from '@/types/types';
 import {
   MAX_200_CHARS,
   MAX_20_CHARS,
-} from '@/constants/charactersLimits';
+} from '@/constants/sizes';
 import { DataTypes, Model } from 'sequelize';
 
 export interface NotesDatabaseInterface extends NoteData {
