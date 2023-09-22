@@ -15,7 +15,6 @@ export const CloseEventButton = ({ id, isClosed }: CloseEventButtonProps) => {
     <>
       <Button
         buttonText={buttonText}
-        isDisabled={false}
         onClick={async () => {
           const response = await closeProjectAPI(id as string);
 

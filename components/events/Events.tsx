@@ -2,21 +2,24 @@ import { Card } from '../UI/Card';
 import { EventData } from '@/types/types';
 import { EventCard } from './EventCard';
 import { AddNewItemCard } from '../AddNewItemCard';
-import { SearchBar } from './SearchBar';
+import { SearchBar } from '../SearchBar';
 import { AddNewItemButton } from '../AddNewItemButton';
 import Projects from '@/models/projects';
 import { getUserIdFromCookie } from '@/lib/auth';
 import Link from 'next/link';
 import { GuideBox } from '../UI/GuideBox';
 import { NoData } from '@/utils/utils';
+import { FilterDropdown } from '../FilterDropdown';
+import { EventsSearchParams } from '@/app/(main)/home/page';
 
 interface EventsProps {
-  event: string;
+  searchParams: EventsSearchParams;
 }
-export const Events = async ({ event }: EventsProps) => {
+
+export const Events = async ({ searchParams }: EventsProps) => {
   const events = await getEvents();
   const sortedEvents = sortEventsByStatus(events).reverse();
-  const filteredEvents = filterEvents(event, sortedEvents);
+  const filteredEvents = filterEvents(searchParams, sortedEvents);
 
   const areEvents = !!filteredEvents.length;
   const eventsStyle = areEvents
@@ -28,7 +31,14 @@ export const Events = async ({ event }: EventsProps) => {
         <>
           <div className="mx-5">
             <GuideBox guideText="You can organize future events. To create event use button or card 'Add New Event'. Click on event for more details." />
-            <SearchBar searchKeyUrl="event" placeholder="Search events by title" />
+            <div className="flex">
+              <SearchBar searchKeyUrl="title" placeholder="Search events by title" />
+              <FilterDropdown
+                filterDescription="Filter by priority"
+                filterKeyUrl="priority"
+                filterOptions={['small', 'medium', 'urgent']}
+              />
+            </div>
             {!areEvents && <AddNewItemButton buttonText="Add new event" itemType="event" />}
           </div>
           <div className={eventsStyle}>
@@ -76,8 +86,20 @@ const getEvents = async (): Promise<EventData[]> => {
   return events;
 };
 
-const filterEvents = (filterValue: string, events: EventData[]): EventData[] => {
-  return filterValue ? events.filter(event => event.title.includes(filterValue)) : events;
+const filterEvents = (searchParams: EventsSearchParams, events: EventData[]): EventData[] => {
+  const { title, priority } = searchParams;
+
+  let filteredEvents = events;
+
+  if (title) {
+    filteredEvents = events.filter(event => event.title.includes(title));
+  }
+
+  if (priority) {
+    filteredEvents = filteredEvents.filter(event => priority.includes(event.priority));
+  }
+
+  return filteredEvents;
 };
 
 const sortEventsByStatus = (events: EventData[]): EventData[] => {

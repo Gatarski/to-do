@@ -68,7 +68,7 @@ export const Event = async ({ event }: EventProps) => {
                   </div>
                 </div>
                 <div className="w-full flex items-center">
-                  <GuideBox guideText="You can organize your event. To create tasks in event use button or card 'Add New Task'. Click on task to complete it." />
+                  <GuideBox guideText="You can organize your event: To create tasks in event use button or card 'Add New Task'. Click on task to complete it. You can close or reopen event." />
                   <div className="ml-2 portrait:hidden">
                     <ChipWithTitle chipText={countCompletedTasks(tasks)} chipTitle="Completed:" />
                   </div>

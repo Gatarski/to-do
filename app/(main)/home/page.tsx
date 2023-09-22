@@ -1,15 +1,14 @@
 import { Events } from '@/components/events/Events';
 
-interface HomeSearchParams {
-  event: string;
-  task: string;
+export interface EventsSearchParams {
+  title: string;
+  priority: string | string[];
 }
 
 interface HomeProps {
-  searchParams: HomeSearchParams;
+  searchParams: EventsSearchParams;
 }
 
 export default async function HomePage({ searchParams }: HomeProps) {
-  const { event } = searchParams;
-  return <Events event={event} />;
+  return <Events searchParams={searchParams} />;
 }

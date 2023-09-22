@@ -12,7 +12,7 @@ export interface EventData {
   id?: number;
   title: string;
   shortDescription: string;
-  priority: 'small' | 'medium' | 'urgent';
+  priority: string;
   deadline: string | Dayjs;
   status: EventStatus;
 }
@@ -21,7 +21,7 @@ export interface TaskData {
   id?: string;
   task: string;
   isDone: boolean;
-  priority: 'small' | 'medium' | 'urgent';
+  priority: string;
   isDisabled?: boolean;
 }
 
@@ -32,8 +32,9 @@ export interface NoteData {
   isImportant: boolean;
 }
 
-
 export type ItemType = 'event' | 'task' | 'note';
+
+export type SearchKeyType = 'title' | 'priority';
 
 export interface ModalMessages {
   title: string;
@@ -56,4 +57,3 @@ export interface PreviewData {
 }
 
 export type ModalType = 'add' | 'edit';
-

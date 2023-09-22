@@ -67,7 +67,6 @@ const ModalFooter = ({
     <>
       <Button
         buttonText="Cancel"
-        isDisabled={false}
         onClick={() => {
           setIsConfirmed(false);
           closeModal();

@@ -42,7 +42,6 @@ const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Elemen
     <>
       <Button
         buttonText="Cancel"
-        isDisabled={false}
         onClick={() => {
           closeModal();
         }}
@@ -50,7 +49,6 @@ const ModalFooter = ({ closeModal, itemType, id }: ModalFooterProps): JSX.Elemen
       <Button
         className="mr-2"
         buttonText="Delete"
-        isDisabled={false}
         type="primary"
         onClick={async () => {
           await deleteAction(itemType, id);

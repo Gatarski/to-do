@@ -1,14 +1,16 @@
 'use client';
-import { ItemType } from '@/types/types';
+import { SearchKeyType } from '@/types/types';
+import { useGetCreateQueryParamsUrl } from '@/utils/client-utils';
 import { Input } from 'antd';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const { Search } = Input;
 
 interface SearchBarProps {
   placeholder: string;
-  searchKeyUrl: ItemType;
+  searchKeyUrl: SearchKeyType;
 }
 /*
 SearchBar create query params in URL with key from searchKeyUrl and value from input.
@@ -18,11 +20,16 @@ Thanks to that we can display filtered list on server-component
 */
 export const SearchBar = ({ searchKeyUrl, placeholder }: SearchBarProps) => {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  // queryParamsValue is default input value which is displayed when query params in active
+  const getCreateQueryParamsUrl = useGetCreateQueryParamsUrl();
   const queryParamsValue = searchParams.get(searchKeyUrl);
+
+  const [value, setValue] = useState(queryParamsValue);
+
+  useEffect(() => {
+    setValue(queryParamsValue);
+  }, [queryParamsValue]);
+
   return (
     <Search
       className="mb-5"
@@ -30,9 +37,13 @@ export const SearchBar = ({ searchKeyUrl, placeholder }: SearchBarProps) => {
       allowClear={false}
       enterButton="Search"
       size="large"
-      defaultValue={queryParamsValue ? queryParamsValue : undefined}
+      value={value as string}
+      onChange={e => {
+        setValue(e.target.value);
+      }}
       onSearch={(value: string) => {
-        router.push(value ? `${pathname}?${searchKeyUrl}=${value}` : pathname);
+        const queryParams = getCreateQueryParamsUrl(searchKeyUrl, value);
+        router.push(queryParams);
       }}
     />
   );

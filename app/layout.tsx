@@ -9,5 +9,3 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     </html>
   );
 }
-
-// zastanowić się na wyrzuceniem tego p-10 i potem tych zaokręgleń

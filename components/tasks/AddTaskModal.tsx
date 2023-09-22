@@ -68,12 +68,11 @@ export const AddTaskModal = ({ modalOpen, closeModal, eventId }: AddTaskModalPro
             <div className="flex place-content-end gap-3 border-t border-solid pr-5 pt-6">
               <Button
                 buttonText="Cancel"
-                isDisabled={false}
                 onClick={() => {
                   closeModal();
                 }}
               />
-              <Button buttonText="Save" isDisabled={false} type="primary" htmlType="submit" />
+              <Button buttonText="Save" type="primary" htmlType="submit" />
             </div>
           </form>
         </FormikProvider>

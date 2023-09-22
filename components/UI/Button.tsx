@@ -2,21 +2,21 @@ import { Button as ButtonAnt } from 'antd';
 import React from 'react';
 
 interface ButtonsProps {
-  isDisabled: boolean;
   buttonText: string;
   type?: 'primary' | 'dashed' | 'link' | 'text' | 'default';
   htmlType?: 'button' | 'submit' | 'reset';
   className?: string;
   onClick?: Function;
+  isDisabled?: boolean;
 }
 
 const Button: React.FC<ButtonsProps> = ({
-  isDisabled,
   buttonText,
   htmlType = 'button',
   type = 'default',
   className,
   onClick,
+  isDisabled = false,
 }) => {
   return (
     <ButtonAnt
