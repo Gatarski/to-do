@@ -1,0 +1,19 @@
+{
+  "name": "cypress",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cypress": "^13.2.0"
+  },
+  "scripts": {
+    "e2e": "npx cypress run --spec cypress/e2e/*.cy.ts",
+    "smokeTest": "npx cypress run --spec cypress/e2e/smokeTest.cy.ts"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "plugin:cypress/recommended"
+    ]
+  }
+}

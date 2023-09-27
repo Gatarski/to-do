@@ -36,3 +36,7 @@ next-env.d.ts
 
 # environment
 .env
+
+# e2e
+/e2e/node_modules
+/e2e/environment.e2e.ts

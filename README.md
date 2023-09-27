@@ -41,7 +41,15 @@ How fill .env:
 
 ### Unit tests
 Unit tests are in folder `/tests`, test are created with Jest and react testing library .
-To run use `yarn test`
+To run use `yarn test` in root folder.
 
 ### e2e tests
-TBA (will be created in Cypress)
+End-to-end (e2e) tests are in folder `/e2e` to run need you need install dependencies by `yarn install` on `/e2e` folder.
+Tests got its own `package.json` hence installed packages are separated from application code.
+
+You need to create file `environment.e2e.ts` (eg.: from `environment.e2e-example.ts`) on `/e2e` folder and fill it.
+
+To run test:
+- `npx cypress open` - it will open Cypress window when you can chose which tests should run
+- `yarn e2e` - it will run all tests in headless mode
+- `yarn <test_name>` (eg.: `yarn smokeTest`) - it will run specific test in headless mode

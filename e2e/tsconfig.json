@@ -1,0 +1,10 @@
+// this is tsconfig for Cypress tests
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"],
+    "module": "CommonJS"
+  },
+  "include": ["**/*.ts"]
+}
