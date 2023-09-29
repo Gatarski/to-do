@@ -7,7 +7,8 @@
   },
   "scripts": {
     "e2e": "npx cypress run --spec cypress/e2e/*.cy.ts",
-    "smokeTest": "npx cypress run --spec cypress/e2e/smokeTest.cy.ts"
+    "smokeTest": "npx cypress run --spec cypress/e2e/smokeTest.cy.ts",
+    "events": "npx cypress run --spec cypress/e2e/events.cy.ts"
   },
   "eslintConfig": {
     "extends": [

@@ -1,5 +1,8 @@
 import { pageUrl } from '../../environment.e2e';
 
+export const logoutIconSelector = 'img[alt="Logout icon"]';
+export const modalContentSelector = 'div[class="ant-modal-content"]';
+
 class CommonElements {
   visitPage = (url = pageUrl) => {
     cy.visit(url);
@@ -20,6 +23,18 @@ class CommonElements {
 
   clickButtonByText = (buttonText: string) => {
     cy.get('button').contains(buttonText).click();
+  };
+
+  checkGuideBoxText = (expectedText: string) => {
+    cy.get('#guideBox').contains(expectedText);
+  };
+
+  logoutUser = () => {
+    cy.get(logoutIconSelector).click();
+  };
+
+  checkNoDataMessage = (message: string) => {
+    cy.get('#noData').contains(message);
   };
 }
 

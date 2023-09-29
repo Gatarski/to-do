@@ -1,9 +1,8 @@
 import { pageUrl } from '../../environment.e2e';
-import { commonElements } from './common';
+import { commonElements, logoutIconSelector } from './common';
 
 const loginInputSelector = 'input[id="email"]';
 const passwordInputSelector = 'input[id="password"]';
-const logoutIconSelector = 'img[alt="Logout icon"]'
 
 class LoginPage {
   checkWelcomePageTexts = () => {

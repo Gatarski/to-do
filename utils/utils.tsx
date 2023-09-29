@@ -34,7 +34,7 @@ export const displayAddModal = (
 };
 
 export const NoData = ({ message }: { message: string }): JSX.Element => {
-  return <div className="text-3xl font-bold">{message}</div>;
+  return <div id="noData" className="text-3xl font-bold">{message}</div>;
 };
 
 export const getCurrentDate = () => new Date().toJSON().slice(0, 10);

@@ -38,19 +38,38 @@ describe('Should log to page', () => {
 });
 
 describe('Should check that Events, Notes and Profile are displayed', () => {
-  it('should check texts on Event page ', () => {});
+  it('should check texts on Event page ', () => {
+    commonElements.checkGuideBoxText(
+      "You can organize future events. To create event use button or card 'Add New Event'. Click on event for more details.",
+    );
+  });
 
-  it('should go to Notes page ', () => {});
+  it('should go to Notes page ', () => {
+    commonElements.clickLinkByText('Notes');
+  });
 
-  it('should check texts on Notes page ', () => {});
+  it('should check texts on Notes page ', () => {
+    commonElements.checkGuideBoxText(
+      "You can create notes. To create note use button or card 'Add new note'. Click on note for more details.",
+    );
+  });
 
-  it('should go to Profile page ', () => {});
+  it('should go to Profile page ', () => {
+    commonElements.clickLinkByText('Profile');
+  });
 
-  it('should check texts on Profile page ', () => {});
+  it('should check texts on Profile page ', () => {
+    commonElements.checkHeaderText('h1', 'Your profile and data');
+    commonElements.checkHeaderText('h2', 'Preview your data');
+  });
 });
 
 describe('Should log out', () => {
-  it('should click logout icon ', () => {});
+  it('should click logout icon ', () => {
+    commonElements.logoutUser();
+  });
 
-  it('should check that user is logged out ', () => {});
+  it('should check that user is logged out ', () => {
+    loginPage.checkLoginPageTexts();
+  });
 });
