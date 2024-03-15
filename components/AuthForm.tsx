@@ -103,9 +103,9 @@ export const AuthForm = ({ authMode }: AuthFormProps) => {
   useValidationMessage(apiError, 'error', setApiError);
 
   return (
-    <>
+    <div className="w-1/2 text-center">
       <FormikProvider value={formik}>
-        <div className="text-center">
+        <div>
           <h2 className="text-3xl mb-2">{header}</h2>
           <p className="text-lg text-black/25 mobile:hidden">{subheader}</p>
         </div>
@@ -141,7 +141,7 @@ export const AuthForm = ({ authMode }: AuthFormProps) => {
           )}
         </div>
       </FormikProvider>
-    </>
+    </div>
   );
 };
 

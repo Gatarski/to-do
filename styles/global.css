@@ -14,18 +14,6 @@
   box-sizing: border-box;
 }
 
-.mesh {
-  background-color: #add8e6;
-  background-image: radial-gradient(at 50% 80%, rgb(59, 62, 63), transparent 50%),
-    radial-gradient(at 30% 30%, rgb(14, 21, 122), transparent 50%),
-    radial-gradient(at 70% 70%, rgb(14, 21, 122), transparent 50%);
-}
-
-.glass {
-  backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
 [data-nextjs-scroll-focus-boundary] {
   display: contents;
 }
@@ -52,4 +40,17 @@
 *::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 8px grey;
   border-radius: 10px;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

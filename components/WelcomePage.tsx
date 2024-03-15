@@ -11,12 +11,10 @@ export const WelcomePage = async () => {
   }
 
   return (
-    <>
-      <div className="text-center">
+    <div className="text-center">
         <h1 className="text-3xl mb-2">Welcome</h1>
-        <h2 className="text-2xl mb-2 p-1">Have plans to organize?</h2>
-        <p className="tex-lg text-black/25">
-          Create simple well organized event with tasks to not miss anything
+        <p className="text-lg text-black/25">
+          Login in or register user
         </p>
         <div className="flex justify-center m-5">
           <Image
@@ -25,7 +23,6 @@ export const WelcomePage = async () => {
             alt="To do list"
           />
         </div>
-      </div>
       <div className="flex items-center justify-center">
         <div className="m-3 p-3">
           <Link href="/login" className="text-blue-600 font-bold text-sm">
@@ -38,6 +35,6 @@ export const WelcomePage = async () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };

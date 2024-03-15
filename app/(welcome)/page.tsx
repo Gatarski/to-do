@@ -1,4 +1,3 @@
-import { Card } from '@/components/UI/Card';
 import database from '@/lib/database';
 import { WelcomePage } from '@/components/WelcomePage';
 import Projects from '@/models/projects';
@@ -10,9 +9,9 @@ export default async function Home() {
   await syncWithDataBase();
 
   return (
-    <Card className="portrait:w-[350px]">
-      <WelcomePage />
-    </Card>
+    <div className="w-1/2 flex items-center justify-center bg-white">
+        <WelcomePage />
+    </div>
   );
 }
 

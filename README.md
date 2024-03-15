@@ -53,3 +53,12 @@ To run test:
 - `npx cypress open` - it will open Cypress window when you can chose which tests should run
 - `yarn e2e` - it will run all tests in headless mode
 - `yarn <test_name>` (eg.: `yarn smokeTest`) - it will run specific test in headless mode
+
+
+// TO DO:
+1. Spojrzeć na https://www.bitrix24.pl/uses/to-do-list-czyli-lista-rzeczy-do-zrobienia.php?utm_source=google&utm_medium=cpc&utm_campaign=10618862608-104405168105&gad_source=1&gclid=EAIaIQobChMIjpv_kr2ohAMVWDQGAB0FeQaKEAAYAiAAEgLSXvD_BwE - zobaczyć obrazki jak to wygląda na tej aplikacji:
+- zmienić prawą stronę czarną na jakiś inny ładny obrazek - może na ten background color
+- wprowadzić i18next
+
+- root@root.pl
+- rootoo
