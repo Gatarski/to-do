@@ -4,7 +4,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={'h-screen w-screen'}>
-       <div className='w-full h-full flex items-center justify-center bg-slate-300'>
+       <div className='w-full h-full flex items-center justify-center bg-slate-300 mobile:bg-white'>
             {children}
         </div>
       </body>

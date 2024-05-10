@@ -56,9 +56,10 @@ To run test:
 
 
 // TO DO:
-1. Spojrzeć na https://www.bitrix24.pl/uses/to-do-list-czyli-lista-rzeczy-do-zrobienia.php?utm_source=google&utm_medium=cpc&utm_campaign=10618862608-104405168105&gad_source=1&gclid=EAIaIQobChMIjpv_kr2ohAMVWDQGAB0FeQaKEAAYAiAAEgLSXvD_BwE - zobaczyć obrazki jak to wygląda na tej aplikacji:
-- zmienić prawą stronę czarną na jakiś inny ładny obrazek - może na ten background color
-- wprowadzić i18next
+1. OPTIONAL - Spojrzeć na https://www.bitrix24.pl/uses/to-do-list-czyli-lista-rzeczy-do-zrobienia.php?utm_source=google&utm_medium=cpc&utm_campaign=10618862608-104405168105&gad_source=1&gclid=EAIaIQobChMIjpv_kr2ohAMVWDQGAB0FeQaKEAAYAiAAEgLSXvD_BwE - zobaczyć obrazki jak to wygląda na tej aplikacji:
+2. Zobaczyć/Dodać cypress
+3. wprowadzić i18next
+4. zobaczyć/dodać testy jednostkowe
 
 - root@root.pl
 - rootoo

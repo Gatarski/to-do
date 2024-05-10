@@ -5,10 +5,9 @@ export default async function WelcomeLayout({ children }: { children: React.Reac
   return (
        <div className='w-full h-full flex items-center justify-center'>
           <div className='w-full h-full flex'>
-              <div className='w-1/2'>
+              <div className='w-1/2 mobile:hidden'>
                 <div className="flex justify-center m-20 flex flex-col items-center">
                   <Image
-                    className={'mobile:w-[125px] mobile:h-[125px]'}
                     src={ToDoImage}
                     alt="To do logo"
                   />

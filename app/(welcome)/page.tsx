@@ -9,7 +9,7 @@ export default async function Home() {
   await syncWithDataBase();
 
   return (
-    <div className="w-1/2 flex items-center justify-center bg-white">
+    <div className="w-1/2 flex items-center justify-center bg-white mobile:w-full">
         <WelcomePage />
     </div>
   );
