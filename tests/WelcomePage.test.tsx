@@ -17,13 +17,10 @@ describe('Test component WelcomePage', () => {
 
   it('should check components texts', () => {
     const headerText = document.querySelector('h1')?.textContent;
-    const subHeaderText = document.querySelector('h2')?.textContent;
     const paragraphText = document.querySelector('p')?.textContent;
-
     expect(headerText).toBe('Welcome');
-    expect(subHeaderText).toBe('Have plans to organize?');
     expect(paragraphText).toBe(
-      'Create simple well organized event with tasks to not miss anything',
+      'Login in or register user',
     );
   });
 
